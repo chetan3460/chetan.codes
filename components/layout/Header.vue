@@ -1,32 +1,36 @@
 <template>
-    <header class="header left-0 fixed top-0 w-full z-10 shadow-md">
-        <div class="header__wrapper flex align-center justify-between @container">
-            <div class="header__block header__block--left">
-                <a href="/" class="header__logo" data-pointer="link" data-pointer-text="Reload">
-                    <div class="header__pinwheel">
-                        <span class="header__pinwheel-svg svg-data">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                                <path
+    <header class="header left-0 fixed top-0 w-full z-10">
+        <div
+            class="header__wrapper w-full h-[6.25rem] bg-gray-300 backdrop-blur-[10px] flex items-center justify-between @container">
+            <div class="header__block header__block--left flex items-center">
+                <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
+                    <div class="header__pinwheel relative z-[1] w-[1.25rem] h-[2.5rem] overflow-hidden">
+                        <span class="absolute top-0 left-0 w-[2.5rem] h-[2.5rem] rotate-[-24deg] inline-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="w-full h-full">
+                                <path class="fill-[var(--col-pinwheel)]"
                                     d="M7.4436 2.4046c-.0564-.3077.4728-.6084 1.5878-.902 1.115-.2938 2.0536-.4406 2.8158-.4406.3387 0 .494.056.4657.1678l-3.345 6.545c-.0282.084-.1058.126-.2329.126-.127 0-.1905-.042-.1905-.126L7.4436 2.4046Z">
                                 </path>
-                                <path
-                                    d="M9.5607 8.8237c-.0564 0-.1058-.056-.1482-.1678-.0423-.1119-.0212-.1818.0635-.2098l4.7847-2.727c.254-.112.628.1747 1.122.86.494.6853.9245 1.4265 1.2915 2.2236.367.7972.4657 1.1818.2964 1.1538L9.5607 8.8237Z">
+                                <path class="fill-[var(--col-accent)]"
+                                    d="M9.5607 8.8237c-.0564 0-.1058-.056-.1482-.1678-.0423-.1119-.0212-.1818.0635-.2098l4.7847-2.727c.254-.112.628.1747 1.122.86.494.6853.9245 1.4265 1.2915 2.2236.367 7972.4657 1.1818.2964 1.1538L9.5607 8.8237Z">
                                 </path>
-                                <path
+                                <path class="fill-[var(--col-pinwheel)]"
                                     d="M8.7986 9.7467c0-.0559.0564-.1188.1693-.1888.113-.0699.1835-.0909.2117-.0629l4.0649 3.734c.1976.1679.0423.5944-.4658 1.2797a12.241 12.241 0 0 1-1.736 1.888c-.6493.5733-.988.7761-1.0162.6083l-1.228-7.2163v-.042Z">
                                 </path>
-                                <path
+                                <path class="fill-[var(--col-accent)]"
                                     d="M5.75 14.6136c-.0283.0839-.1412.1258-.3388.1258-.367 0-.9245-.1468-1.6725-.4405-.748-.2937-1.4114-.6154-1.99-.965-.5788-.3496-.7975-.5524-.6564-.6083L7.6977 9.369l.0847-.042c.0846 0 .1623.035.2328.105.0706.0699.0918.1328.0635.1888L5.75 14.6136Z">
                                 </path>
-                                <path
+                                <path class="fill-[var(--col-pinwheel)]"
                                     d="M2.0662 7.9007c-.254-.056-.3811-.4755-.3811-1.2586 0-.7832.0917-1.6293.2752-2.5383s.3458-1.2937.487-1.1538L7.74 8.1524c.0565.056.0635.1399.0212.2518-.0424.1119-.0918.1538-.1482.1258l-5.5468-.6293Z">
                                 </path>
                             </svg>
                         </span>
+
                     </div>
-                    <div class="header__author">
-                        <span class="header__name">Chetan Dhargalkar</span>
-                        <span class="header__role">Creative Developer</span>
+                    <div class="header__author relative z-[2] px-[0.3125rem]">
+                        <span class="header__name text-[var(--col-text)] font-semibold uppercase">Chetan
+                            Dhargalkar</span>
+                        <span class="header__role text-[var(--col-text-500)] font-medium uppercase">Creative
+                            Developer</span>
                     </div>
                 </a>
             </div>

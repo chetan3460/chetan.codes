@@ -1,8 +1,9 @@
 <template>
     <header class="header left-0 fixed top-0 w-full z-10">
         <div
-            class="header__wrapper w-full h-[6.25rem] bg-gray-300 backdrop-blur-[10px] flex items-center justify-between @container">
-            <div class="header__block header__block--left flex items-center">
+            class="custom-container header__wrapper w-full h-[6.25rem] bg-gray-300 backdrop-blur-[10px]   py-3 grid grid-cols-12 gap-4">
+            <!-- Logo -->
+            <div class="header__block header__block--left flex items-center col-span-4 col-start-1 flex justify-start">
                 <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1] w-[1.25rem] h-[2.5rem] overflow-hidden">
                         <span class="absolute top-0 left-0 w-[2.5rem] h-[2.5rem] rotate-[-24deg] inline-flex">
@@ -34,16 +35,21 @@
                     </div>
                 </a>
             </div>
-            <div class="header__block header__block--center">
+
+            <!--Name  -->
+            <div class="header__block header__block--center col-span-4 col-start-5 flex justify-center items-center">
                 <div class="header__version">
-                    <span>
-                        Portfolio <b>'25</b>
+                    <span class="">
+                        Portfolio <b class="text-[var(--col-accent)]">'25</b>
                     </span>
                 </div>
             </div>
-            <div class="header__block header__block--right">
-                <button class="header__colors" data-pointer="simple" title="Theme Switcher" aria-label="Theme Dark">
-                    <span class="header__colors-picker svg-data">
+            <!-- Icon -->
+            <div class="header__block header__block--right items-center  col-span-4 col-start-9 flex justify-end ">
+                <button class="header__colors  h-[2.75rem] left-[.5rem] relative w-[2.75rem]" data-pointer="simple"
+                    title="Theme Switcher" aria-label="Theme Dark">
+                    <span
+                        class="header__colors-picker h-[1.5rem] w-[1.8125rem] absolute text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] svg-data">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 78">
                             <g fill="#FFFFFF" fill-rule="nonzero">
                                 <path

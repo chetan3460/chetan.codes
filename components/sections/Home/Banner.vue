@@ -1,47 +1,40 @@
 <template>
 
-    <div class="px-[12px] md:px-[36px] xl:px-0 mt-[70px] lg:mt-[138px]">
-        <div class="text-center mb-[45px] lg:mb-[88px] lg:mb-[88px]">
-            <h2
-                class="font-bold font-chivo mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] max-w-full">
-                Providing solutions of every kind</h2>
-            <p class="text-quote md:text-lead-lg text-gray-600 mx-auto max-w-[743px]">In a professional context it often
-                happens that private or corporate clients order a publication to publish news.</p>
-        </div>
-        <div class="lg:flex lg:items-center gap-[30px]">
-            <div
-                class="flex items-start gap-5 transition-all duration-300 mb-[33px] hover:translate-y-[-3px] border-b border-gray-200 pb-[50px] last:mb-0">
-                <img class="h-full w-full object-cover max-w-[64px]"
-                    src="https://agon-nuxtjs.vercel.app/assets/images/icons/icon-resources.svg" alt="icon">
-                <div>
-                    <h3 class="font-bold font-chivo text-[20px] leading-[26px] md:text-heading-4 mb-[14px]">1.
-                        Acquisition</h3>
-                    <p class="text-excerpt">Aliquam a augue suscipit, luctus neque purus ipsum neque at dolor primis
-                        libero tempus, blandit</p>
-                </div>
+    <section class="hero-header">
+        <canvas ref="container" class="hero-header__canvas"></canvas>
+        <div class="hero-header__wrapper container grid">
+            <div class="hero-header__slogan">
+                <span class="hero-header__marquee">Creative Developer</span>
+                <span class="hero-header__marquee">Creative Developer</span>
             </div>
-            <div
-                class="flex items-start gap-5 transition-all duration-300 mb-[33px] hover:translate-y-[-3px] border-b border-gray-200 pb-[50px] last:mb-0">
-                <img class="h-full w-full object-cover max-w-[64px]"
-                    src="https://agon-nuxtjs.vercel.app/assets/images/icons/icon-resources.svg" alt="icon">
-                <div>
-                    <h3 class="font-bold font-chivo text-[20px] leading-[26px] md:text-heading-4 mb-[14px]">2.
-                        Activation</h3>
-                    <p class="text-excerpt">Aliquam a augue suscipit, luctus neque purus ipsum neque at dolor primis
-                        libero tempus, blandit</p>
-                </div>
-            </div>
-            <div
-                class="flex items-start gap-5 transition-all duration-300 mb-[33px] hover:translate-y-[-3px] border-b border-gray-200 pb-[50px]">
-                <img class="h-full w-full object-cover max-w-[64px]"
-                    src="https://agon-nuxtjs.vercel.app/assets/images/icons/icon-resources.svg" alt="icon">
-                <div>
-                    <h3 class="font-bold font-chivo text-[20px] leading-[26px] md:text-heading-4 mb-[14px]">3. Retention
-                    </h3>
-                    <p class="text-excerpt">Aliquam a augue suscipit, luctus neque purus ipsum neque at dolor primis
-                        libero tempus, blandit</p>
-                </div>
+            <div class="hero-header__bottom">
+                <h1 class="hero-header__description" data-splitting>
+                    Hey there, I’m Chetan Dhargalkar, Creative Developer <br />
+                    based in Goa - India, dedicated to crafting <br />unforgettable experiences.
+                </h1>
+                <button class="hero-header__scroll" data-pointer="link" data-pointer-text="Scroll" title="Scroll Down"
+                    aria-label="Scroll Down">
+                    <span class="svg-data">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                            <path fill="#000000" fill-rule="nonzero"
+                                d="M8.5623 31.8141 22.021 45.2745c1.254 1.2496 3.2815 1.2496 4.5312 0L40.0125 31.814c1.2541-1.254 1.2541-3.2815 0-4.5312-1.254-1.2497-3.2815-1.2497-4.5312 0l-7.99 7.99V5.4156c0-1.7681-1.4357-3.2039-3.2039-3.2039s-3.204 1.4358-3.204 3.204v29.8527l-7.99-7.99a3.196 3.196 0 0 0-2.2666-.9395 3.2 3.2 0 0 0-2.2667.9395c-1.2541 1.254-1.2541 3.2815 0 4.5312l.0022.0045Z">
+                            </path>
+                        </svg>
+                    </span>
+                </button>
             </div>
         </div>
-    </div>
+    </section>
+
 </template>
+<script setup>
+// import { useWaveAnimation } from "@/composables/useHeroWave";
+import { useHeroAnimations } from "@/composables/useHeroBanner";
+
+useHeroAnimations();
+onMounted(() => {
+    $splitting();
+});
+// const { container, isAnimating } = useWaveAnimation();
+// console.log("[WaveAnimation] Composable loaded:", { container, isAnimating });
+</script>

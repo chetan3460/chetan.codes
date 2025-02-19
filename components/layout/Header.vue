@@ -6,7 +6,8 @@
             <div class="header__block header__block--left flex items-center col-span-4 col-start-1 flex justify-start">
                 <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1] w-[1.25rem] h-[2.5rem] overflow-hidden">
-                        <span class="absolute top-0 left-0 w-[2.5rem] h-[2.5rem] rotate-[-24deg] inline-flex">
+                        <span
+                            class="header__pinwheel-svg svg-data absolute top-0 left-0 w-[2.5rem] h-[2.5rem] rotate-[-24deg] inline-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="w-full h-full">
                                 <path class="fill-[var(--col-pinwheel)]"
                                     d="M7.4436 2.4046c-.0564-.3077.4728-.6084 1.5878-.902 1.115-.2938 2.0536-.4406 2.8158-.4406.3387 0 .494.056.4657.1678l-3.345 6.545c-.0282.084-.1058.126-.2329.126-.127 0-.1905-.042-.1905-.126L7.4436 2.4046Z">
@@ -81,3 +82,17 @@
         </div>
     </header>
 </template>
+<script setup>
+import { onMounted, onUnmounted } from "vue";
+import { useHeaderAnimation } from "@/composables/useHeaderAnimation";
+
+const { initHeaderAnimation } = useHeaderAnimation();
+
+onMounted(() => {
+    initHeaderAnimation();
+});
+
+// onUnmounted(() => {
+//     console.log("🛑 Header Component Unmounted");
+// });
+</script>

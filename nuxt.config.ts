@@ -7,7 +7,10 @@ export default defineNuxtConfig({
   components: true, // Ensure components auto-import is enabled
 
   css: ['~/public/assets/css/main.css'],
-
+  app: {
+    script: [{ src: '/js/window.js' }], // Path relative to the public directory
+  },
+  ssr: false,
   vite: {
     plugins: [
       tailwindcss(),

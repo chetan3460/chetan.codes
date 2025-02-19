@@ -28,13 +28,8 @@
 
 </template>
 <script setup>
-// import { useWaveAnimation } from "@/composables/useHeroWave";
 import { useHeroAnimations } from "@/composables/useHeroBanner";
 
 useHeroAnimations();
-onMounted(() => {
-    $splitting();
-});
-// const { container, isAnimating } = useWaveAnimation();
-// console.log("[WaveAnimation] Composable loaded:", { container, isAnimating });
+
 </script>

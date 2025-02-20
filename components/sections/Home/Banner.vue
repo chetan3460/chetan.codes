@@ -9,8 +9,9 @@
             </div>
             <div class="hero-header__bottom">
                 <h1 class="hero-header__description" data-splitting>
-                    Hey there, I’m Chetan Dhargalkar, Creative Developer <br />
-                    based in Goa - India, dedicated to crafting <br />unforgettable experiences.
+                    CREATIVE DEVELOPER
+                    <!-- Hey there, I’m Chetan Dhargalkar, Creative Developer <br />
+                    based in Goa - India, dedicated to crafting <br />unforgettable experiences. -->
                 </h1>
                 <button class="hero-header__scroll" data-pointer="link" data-pointer-text="Scroll" title="Scroll Down"
                     aria-label="Scroll Down">

@@ -2,6 +2,7 @@
 
     <SectionsHomeBanner />
     <SectionsHomeAbout />
+    <SectionsHomeContact />
 </template>
 
 <script setup>

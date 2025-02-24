@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <footer data-theme="footer01" class="s is--footer">
 
         <div class="c is--footer">
@@ -174,4 +174,42 @@ footer[data-theme=footer01] {
     width: 100%;
     height: 100%;
 }
-</style>
+</style> -->
+
+<template>
+    <footer class="footer">
+        <div class="footer__wrapper container grid custom-container grid-cols-12 gap-4">
+            <div class="footer__block footer__block--left">
+                <ul class="footer__socials">
+                    <li class="social__item">
+                        <a href="https://www.linkedin.com/in/alessioatzeni/" title="Follow Me on LinkedIn"
+                            target="_blank" rel="noopener noreferrer nofollow" data-pointer="simple">
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li class="social__item">
+                        <a href="https://github.com/Bluxart" title="Follow Me on GitHub" target="_blank"
+                            rel="noopener noreferrer nofollow" data-pointer="simple">
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+                    <li class="social__item">
+                        <a href="https://codepen.io/Bluxart" title="Follow Me on CodePen" target="_blank"
+                            rel="noopener noreferrer nofollow" data-pointer="simple">
+                            <span>CodePen</span>
+                        </a>
+                    </li>
+                    <li class="social__item">
+                        <a href="https://x.com/Bluxart" title="Follow Me on X/Twitter" target="_blank"
+                            rel="noopener noreferrer nofollow" data-pointer="simple">
+                            <span>X/Twitter</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__block footer__block--right">
+                <p class="footer__copyrights">&copy;2025 - Chetan Dhargalkar</p>
+            </div>
+        </div>
+    </footer>
+</template>

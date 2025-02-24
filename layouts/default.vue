@@ -3,6 +3,7 @@
         <LayoutHeader />
         <slot />
         <LayoutFooter />
+        <LayoutCursor />
     </main>
 </template>
 

@@ -51,7 +51,8 @@
                     title="Theme Switcher" aria-label="Theme Dark">
                     <span
                         class="header__colors-picker h-[1.5rem] w-[1.8125rem] absolute text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] svg-data">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 78">
+
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 78">
                             <g fill="#FFFFFF" fill-rule="nonzero">
                                 <path
                                     d="M2.5 26.9h18.1c.9 0 1.7-.7 1.9-1.6.7-3.4 2-6.5 3.9-9.3.5-.8.5-1.8-.2-2.5L13.3.7c-.8-.8-2.2-.8-2.9.1C5.1 7.5 1.6 15.7.5 24.7c-.1 1.2.8 2.2 2 2.2Z">
@@ -75,7 +76,7 @@
                                     d="M60.9 30.5c0-5.7-7.6-18.7-9.9-22.6-.6-1.1-1.8-1.7-3-1.7s-2.4.6-3 1.7c-2.3 3.9-9.9 16.9-9.9 22.6 0 7.1 5.8 12.9 12.9 12.9 7.1 0 12.9-5.7 12.9-12.9ZM46.4 25c-.1.2-3.2 5.3-.9 8.7.3.5.4 1 .3 1.5-.1.5-.4 1-.9 1.3-.3.2-.7.4-1.1.4-.7 0-1.3-.3-1.7-.9-3.8-5.7.7-12.9.9-13.2.3-.5.8-.8 1.3-.9.5-.1 1.1 0 1.6.3.8.5 1.1 1.8.5 2.8Z">
                                 </path>
                             </g>
-                        </svg>
+                        </svg> -->
                     </span>
                 </button>
             </div>

@@ -2,6 +2,7 @@
 
     <SectionsHomeBanner />
     <SectionsHomeAbout />
+    <SectionsHomeWorks />
     <SectionsHomeContact />
 </template>
 

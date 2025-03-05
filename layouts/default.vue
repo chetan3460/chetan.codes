@@ -6,7 +6,3 @@
         <LayoutCursor />
     </main>
 </template>
-
-<script setup>
-
-</script>

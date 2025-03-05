@@ -1,7 +1,7 @@
 <template>
-
     <section class="hero-header">
         <canvas ref="container" class="hero-header__canvas"></canvas>
+
         <div class="hero-header__wrapper container grid">
             <div class="hero-header__slogan">
                 <span class="hero-header__marquee">Creative Developer</span>
@@ -9,9 +9,8 @@
             </div>
             <div class="hero-header__bottom">
                 <h1 class="hero-header__description" data-splitting>
-                    CREATIVE DEVELOPER
-                    <!-- Hey there, I’m Chetan Dhargalkar, Creative Developer <br />
-                    based in Goa - India, dedicated to crafting <br />unforgettable experiences. -->
+                    Hey there, I’m Chetan Dhargalkar, Creative Developer <br />
+                    based in Goa - India, dedicated to crafting <br />unforgettable experiences.
                 </h1>
                 <button class="hero-header__scroll" data-pointer="link" data-pointer-text="Scroll" title="Scroll Down"
                     aria-label="Scroll Down">
@@ -26,11 +25,13 @@
             </div>
         </div>
     </section>
-
 </template>
+
 <script setup>
 import { useHeroAnimations } from "@/composables/useHeroBanner";
-
 useHeroAnimations();
 
+// ✅ Corrected import
+import useWaveAnimation from '@/composables/useWaveAnimation';
+const { container } = useWaveAnimation();
 </script>

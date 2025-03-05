@@ -21,6 +21,7 @@
                     <span class="work__item-deco">01</span>
                   </div>
                   <div class="work__item-info">
+                    <div class="btn__bg"></div>
                     <span class="work__item-number">01</span>
                     <span class="work__item-attrs">Development • Ecommerce • WordPress </span>
                     <span class="work__item-agency">Agency: Secret Key</span>
@@ -220,6 +221,20 @@ onMounted(projectPinnedSection);
 </script>
 
 <style>
+.btn__bg {
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  opacity: .2;
+  background-color: #1fa5fd;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .content-section__decorative {
   color: var(--col-text-deco);
   font-size: 33vw;

@@ -1,4 +1,5 @@
 <template>
+
     <SectionsHomeBanner />
     <SectionsHomeAbout />
     <SectionsHomeWorks />

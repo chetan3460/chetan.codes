@@ -1,8 +1,8 @@
 <template>
     <section class="hero-header">
-        <canvas ref="container" class="hero-header__canvas"></canvas>
+        <canvas class="hero-header__canvas"></canvas>
 
-        <div class="hero-header__wrapper container grid">
+        <div class="hero-header__wrapper container custom-container grid grid-cols-12 gap-[3.125rem] ">
             <div class="hero-header__slogan">
                 <span class="hero-header__marquee">Creative Developer</span>
                 <span class="hero-header__marquee">Creative Developer</span>
@@ -30,8 +30,7 @@
 <script setup>
 import { useHeroAnimations } from "@/composables/useHeroBanner";
 useHeroAnimations();
+import { useWaveAnimation } from "@/composables/useWaveAnimation";
 
-// ✅ Corrected import
-import useWaveAnimation from '@/composables/useWaveAnimation';
-const { container } = useWaveAnimation();
+const { updateTheme } = useWaveAnimation();
 </script>

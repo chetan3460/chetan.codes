@@ -1,90 +1,126 @@
-import { SimplexNoise } from 'simplex-noise'; // ✅ Use named import
-import gsap from 'gsap';
+import { ref, onMounted, onUnmounted } from "vue";
+import gsap from "gsap";
+import { debounce } from "lodash";
+import { createNoise3D } from "simplex-noise";
+
+let canvas, context;
+let noise3D = createNoise3D();
+let animationFrameId = null;
+let mouseX = 0, mouseY = 0;
+let scrollY = 0; // Scroll rotation factor
+
+const parameters = {
+    factor: 0.071,
+    variation: 6e-4,
+    amplitude: 300,
+    lines: 15,
+    waveColor: { r: 255, g: 29, b: 72, a: 1 },
+    speed: 0.5,
+    mouseEffect: 0.5,
+    scrollEffect: 50, // Rotation strength
+    waveColors: {
+        "theme-dark": [
+            { r: 255, g: 29, b: 72, a: 1 },
+            { r: 81, g: 244, b: 94, a: 1 },
+            { r: 242, g: 77, b: 7, a: 1 },
+            { r: 15, g: 197, b: 250, a: 1 },
+            { r: 232, g: 67, b: 215, a: 1 }
+        ]
+    },
+    waveColorDuration: 2
+};
+
+const currentTheme = ref("theme-dark");
+const randomness = Array(parameters.lines).fill(0).map((_, i) => i * parameters.factor);
+
+function initCanvas() {
+    canvas = document.querySelector(".hero-header__canvas");
+    if (!canvas) return;
+
+    context = canvas.getContext("2d");
+    handleResize();
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
+    animate();
+}
+
+function handleMouseMove(event) {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = (event.clientX - rect.left) / canvas.width - 0.5;
+    mouseY = (event.clientY - rect.top) / canvas.height - 0.5;
+}
+
+function handleScroll() {
+    scrollY = window.scrollY / parameters.scrollEffect;
+    gsap.to(canvas, { rotate: `${scrollY}deg`, duration: 1, ease: "power2.out" });
+}
+
+function drawWave(time) {
+    if (!context) return;
+
+    const { lines, waveColor, amplitude, variation, speed, mouseEffect } = parameters;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.lineWidth = 1;
+
+    for (let i = 0; i < lines; i++) {
+        context.beginPath();
+        for (let x = 0; x <= canvas.width; x++) {
+            const noiseY = noise3D(
+                x * variation + randomness[i] + mouseX * mouseEffect,
+                x * variation,
+                time * speed
+            );
+
+            const y = canvas.height / 2 + amplitude * noiseY + mouseY * amplitude * 0.3;
+
+            if (x === 0) context.moveTo(x, y);
+            else context.lineTo(x, y);
+        }
+        context.strokeStyle = `rgba(${waveColor.r}, ${waveColor.g}, ${waveColor.b}, 0.5)`;
+        context.stroke();
+        context.closePath();
+
+        randomness[i] += speed * 0.002;
+    }
+}
+
+function animate() {
+    drawWave(performance.now() / 1000);
+    animationFrameId = requestAnimationFrame(animate);
+}
+
+function handleResize() {
+    const pixelRatio = Math.min(window.devicePixelRatio, 1.5);
+    canvas.width = window.innerWidth * pixelRatio;
+    canvas.height = window.innerHeight * pixelRatio;
+    context.scale(pixelRatio, pixelRatio);
+}
+
+// ✅ Theme Update Function
+function updateTheme(newTheme) {
+    if (!parameters.waveColors[newTheme]) return;
+    currentTheme.value = newTheme;
+    gsap.to(parameters.waveColor, {
+        r: parameters.waveColors[newTheme][0].r,
+        g: parameters.waveColors[newTheme][0].g,
+        b: parameters.waveColors[newTheme][0].b,
+        duration: parameters.waveColorDuration
+    });
+}
 
 export function useWaveAnimation() {
-    const container = ref(null);
-    const marquee = ref(null);
-    const noise3D = new SimplexNoise();
-    const parameters = reactive({
-        factor: 0.071,
-        variation: 0.0006,
-        amplitude: 300,
-        lines: 15,
-        waveColor: { r: 255, g: 29, b: 72, a: 1 },
-        waveColors: {
-            "theme-dark": [{ r: 255, g: 29, b: 72, a: 1 }, { r: 81, g: 244, b: 94, a: 1 }],
-            "theme-light": [{ r: 50, g: 167, b: 193, a: 1 }, { r: 79, g: 193, b: 50, a: 1 }]
-        },
-        waveColorDuration: 5,
-        speed: 0.003,
-    });
-
-    let context = null;
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let isAnimating = false;
-    let colorIndex = 0;
-    let lastFrameTime = 0;
-
-    const setupCanvas = () => {
-        context = container.value.getContext("2d");
-        const pixelRatio = Math.min(window.devicePixelRatio, 1.5);
-        container.value.width = width * pixelRatio;
-        container.value.height = height * pixelRatio;
-        context.scale(pixelRatio, pixelRatio);
-    };
-
-    const drawPaths = () => {
-        context.clearRect(0, 0, width, height);
-        context.lineWidth = 1;
-
-        for (let i = 0; i < parameters.lines; i++) {
-            context.beginPath();
-            context.moveTo(0, height / 2);
-
-            for (let x = 0; x <= width; x++) {
-                const y = height / 2 + parameters.amplitude * noise3D.noise3D(x * parameters.variation, 0, 1);
-                context.lineTo(x, y);
-            }
-
-            const color = parameters.waveColor;
-            context.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
-            context.stroke();
-        }
-    };
-
-    const updateWaveColor = () => {
-        const themeColors = parameters.waveColors["theme-dark"];
-        gsap.to(parameters.waveColor, {
-            r: themeColors[colorIndex].r,
-            g: themeColors[colorIndex].g,
-            b: themeColors[colorIndex].b,
-            duration: parameters.waveColorDuration,
-        });
-        colorIndex = (colorIndex + 1) % themeColors.length;
-    };
-
-    const animate = () => {
-        if (!isAnimating) return;
-        const now = performance.now();
-        if (now - lastFrameTime < 1000 / 60) {
-            requestAnimationFrame(animate);
-            return;
-        }
-        lastFrameTime = now;
-        drawPaths();
-        requestAnimationFrame(animate);
-    };
-
     onMounted(() => {
-        setupCanvas();
-        isAnimating = true;
-        animate();
+        initCanvas();
+        window.addEventListener("resize", debounce(handleResize, 200));
     });
 
     onUnmounted(() => {
-        isAnimating = false;
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener("resize", handleResize);
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("scroll", handleScroll);
     });
 
-    return { container, marquee };
+    return { updateTheme }; // ✅ Now returning updateTheme
 }

@@ -1,12 +1,18 @@
 <template>
+    <!-- <SectionsHomeTest /> -->
 
     <SectionsHomeBanner />
     <SectionsHomeAbout />
-    <SectionsHomeWorks />
+    <!-- <SectionsHomeWorks /> -->
+    <SectionsHomeSkills />
+    <SectionsHomeProcess />
+
     <SectionsHomeContact />
+
 </template>
 
 <script setup>
+
 
 useHead({
     bodyAttrs: {

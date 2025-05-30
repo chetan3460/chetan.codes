@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="works content-section">
-      <div class="container grid custom-container grid-cols-12 gap-4">
+      <div class="grid custom-container grid-cols-12 gap-4">
         <div class="grid__col--full">
           <div class="content-section__head">
             <h2 class="works__title content-section__title scroll-js-title" data-splitting
@@ -157,25 +157,18 @@
 </template>
 
 <script setup>
-import imageSrc from '/assets/Images/me.jpeg'; // Importing from assets
-
-import { useAnimations } from "@/composables/useAnimations";
-
-useAnimations();
-const { $splitting } = useNuxtApp();
-
-onMounted(() => {
-  $splitting();
-});
-
 import { onMounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Back } from 'gsap';
+import { useNuxtApp } from "#app";
+import imageSrc from '/assets/Images/me.jpeg';
+import { useAnimations } from "@/composables/useAnimations";
 
-if (process.client) {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// Plugins
+gsap.registerPlugin(ScrollTrigger);
+
+useAnimations();
+const { $splitting } = useNuxtApp();
 
 const matchMedia = gsap.matchMedia();
 
@@ -184,40 +177,97 @@ function projectPinnedSection() {
     const isLast = index === items.length - 1;
     const media = item.querySelector(".work__item-media");
     const title = item.querySelector(".work__item-title");
-    const chars = title.querySelectorAll(".char");
+    const chars = title?.querySelectorAll(".char");
+    if (!chars?.length) return; // <-- Safeguard
 
-    gsap.set(chars, { perspective: 1000, "will-change": "opacity, transform", opacity: 0, z: -800 });
+    // ✨ Set initial state for text chars
+    gsap.set(chars, {
+      perspective: 1000,
+      "will-change": "opacity, transform",
+      opacity: 0,
+      z: -800
+    });
 
+    // 🔠 Text animation timeline
     const animateText = gsap.timeline().to(chars, {
-      ease: "back.out(1.2)", opacity: 1, z: 0, stagger: 0.04,
-      scrollTrigger: { trigger: title, start: "top 80%", end: "bottom 50%", scrub: true }
+      ease: "back.out(1.2)",
+      opacity: 1,
+      z: 0,
+      stagger: 0.04,
+      scrollTrigger: {
+        trigger: title,
+        start: "top 80%",
+        end: "bottom 50%",
+        scrub: true,
+      }
     });
 
+    // 💻 Desktop (1024px+)
     matchMedia.add("(min-width: 1024px)", () => {
-      gsap.timeline({
-        scrollTrigger: { trigger: item, start: "top 2.5%", end: "+=150%", pin: true, pinSpacing: false, scrub: true }
-      })
+      const desktopTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 2.5%",
+          end: "+=150%",
+          pin: true,
+          pinSpacing: false,
+          scrub: true,
+        }
+      });
+
+      desktopTimeline
         .to(item, {
-          ease: "none", startAt: { filter: "brightness(100%)" },
-          filter: isLast ? "none" : "brightness(0%)", opacity: 0, scale: 0.8, yPercent: isLast ? -100 : -15,
-          onUpdate: () => item.classList.toggle("not-clickable", gsap.getProperty(item, "opacity") < 0.9)
+          ease: "none",
+          startAt: { filter: "brightness(100%)" },
+          filter: isLast ? "none" : "brightness(0%)",
+          opacity: 0,
+          scale: 0.8,
+          yPercent: isLast ? -100 : -15,
+          onUpdate: () => {
+            const isVisible = gsap.getProperty(item, "opacity") >= 0.9;
+            item.classList.toggle("not-clickable", !isVisible);
+          }
         }, 0)
-        .to(title, { ease: "none", yPercent: -100, opacity: 0 }, 0)
-        .add(animateText, "<");
+        .to(title, {
+          ease: "none",
+          yPercent: -100,
+          opacity: 0
+        }, 0)
+        .add(animateText, "<"); // ⬅️ Add text animation timeline
     });
 
+    // 📱 Mobile (max 1023px)
     matchMedia.add("(max-width: 1023px)", () => {
-      gsap.timeline({
-        scrollTrigger: { trigger: item, start: "top 2.5%", end: "+=150%", pinSpacing: false, scrub: true }
-      })
-        .fromTo(media, { opacity: 0 }, { opacity: 1, duration: 1, scrollTrigger: { trigger: item, start: "top 80%", end: "bottom 50%", scrub: true } })
+      const mobileTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 2.5%",
+          end: "+=150%",
+          pinSpacing: false,
+          scrub: true,
+        }
+      });
+
+      mobileTimeline
+        .fromTo(media, { opacity: 0 }, {
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            end: "bottom 50%",
+            scrub: true
+          }
+        })
         .add(animateText, "<");
     });
   });
 }
 
-onMounted(projectPinnedSection);
-
+onMounted(() => {
+  $splitting(); // Run splitting.js (for .char generation)
+  projectPinnedSection(); // Initialize scroll-triggered animations
+});
 </script>
 
 <style>

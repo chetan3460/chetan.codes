@@ -1,13 +1,9 @@
 <template>
     <section class="about content-section">
-        <div class="container grid grid grid-cols-12 gap-4">
+        <div class="custom-container  grid grid-cols-12 gap-4">
             <div class="grid__col--full">
                 <div class="about__media">
-                    <!-- <img src="http://www.alessioatzeni.com/assets/asset.BXJJUYc1_V9uUj.webp" class="media__image"
-                        alt="Alessio Atzeni - Creative Developer" inferSize="true" width="600" height="750"
-                        loading="lazy" decoding="async"> -->
                     <img :src="imageSrc" class="media__image" alt="Alessio Atzeni - Creative Developer">
-
                 </div>
                 <div class="content-section__head">
                     <h2 class="about__title content-section__title scroll-js-title" data-splitting
@@ -43,13 +39,49 @@
 
 <script setup>
 import imageSrc from '/assets/Images/me.jpeg'; // Importing from assets
-
 import { useAnimations } from "@/composables/useAnimations";
-
-useAnimations();
-const { $splitting } = useNuxtApp();
-
-onMounted(() => {
-    $splitting();
-});
+// useAnimations();
+// const { $splitting } = useNuxtApp();
+// onMounted(() => {
+//     $splitting();
+// });
 </script>
+
+
+
+
+<style>
+.about__media {
+    border-radius: 0.9375rem;
+    height: 12.5rem;
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 12.5rem;
+    z-index: 0;
+}
+
+.about__media:before {
+    background-color: var(--overlay-about);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.about__media img {
+    filter: grayscale(1);
+}
+
+@media (max-width: 767px) {
+    .about__media {
+        height: 3.75rem;
+        width: 3.75rem;
+    }
+}
+</style>

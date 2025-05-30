@@ -17,30 +17,33 @@ export function useAnimations() {
     }
 
     function aboutImageAnimation() {
-        const element = document.querySelector(".about__media");
-        if (!element) return;
+        const elements = document.querySelectorAll('.about__media')
+        if (!elements.length) return
 
-        gsap.fromTo(
-            element,
-            {
-                "will-change": "opacity, transform",
-                opacity: 0,
-                scale: 0,
-                rotation: -50,
-            },
-            {
-                ease: "sine.inOut",
-                rotation: 10,
-                opacity: 0.5,
-                scale: 1,
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
-                    end: "bottom 50%",
-                    scrub: true,
+
+        elements.forEach((element) => {
+            gsap.fromTo(
+                element,
+                {
+                    'will-change': 'opacity, transform',
+                    opacity: 0,
+                    scale: 0,
+                    rotation: -50,
                 },
-            }
-        );
+                {
+                    ease: 'sine.inOut',
+                    rotation: 10,
+                    opacity: 0.5,
+                    scale: 1,
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                        end: 'bottom 50%',
+                        scrub: true,
+                    },
+                }
+            )
+        })
     }
 
     function headingAnimation() {
@@ -244,4 +247,26 @@ export function useAnimations() {
         contentAnimation();
         listAnimation();
     });
+}
+
+
+export function useFeaturesScrollAnimation() {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.section-features',
+            end: 'bottom bottom',
+            scrub: true,
+            toggleActions: 'restart none reverse',
+            pin: '.features-wrapper',
+        },
+    })
+
+    tl.from('.features-card', {
+        opacity: 0,
+        yPercent: 50,
+        xPercent: 35,
+        scale: 1.25,
+        duration: 1,
+        stagger: { each: 1, from: 'end' },
+    })
 }

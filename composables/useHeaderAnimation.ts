@@ -23,13 +23,6 @@ export function useHeaderAnimation() {
     //   console.warn("⚠️ Pinwheel element not found.");
       return;
     }
-    // console.log("✅ Pinwheel element found:", pinwheel);
-
-    // if (!logo) {
-    //   console.warn("⚠️ Logo element not found.");
-    // } else {
-    //   console.log("✅ Logo element found:", logo);
-    // }
 
     // 🎯 Scroll Event - Rotates pinwheel based on Lenis scroll position
     const handleScroll = () => {
@@ -99,3 +92,94 @@ export function useHeaderAnimation() {
 
   return { initHeaderAnimation };
 }
+
+
+
+// import gsap from "gsap"
+// import { useNuxtApp } from "#app"
+
+// export function useHeaderAnimation() {
+//   let rotateAnimation: gsap.core.Tween | null = null
+//   const defaultRotation = 24
+//   let startRotation = -24
+
+//   function initHeaderAnimation() {
+//     const { $ScrollSmoother } = useNuxtApp()
+
+//     if (!$ScrollSmoother) {
+//       console.warn("❌ ScrollSmoother not available in app")
+//       return
+//     }
+
+//     // Wait for the next animation frame to ensure it's created
+//     requestAnimationFrame(() => {
+//       const smoother = $ScrollSmoother.get()
+
+//       if (!smoother) {
+//         console.warn("❌ ScrollSmoother instance not found (did you call create()?)")
+//         return
+//       }
+
+//       const logo = document.querySelector(".header__logo")
+//       const pinwheel = document.querySelector(".header__pinwheel-svg")
+
+//       if (!pinwheel) {
+//         return
+//       }
+
+//       const handleScroll = () => {
+//         const scrollTop = smoother.scrollTop()
+//         const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+//         const rotation = (360 * (scrollTop / maxScroll)) - defaultRotation
+//         gsap.set(pinwheel, { rotation })
+//         startRotation = rotation
+//       }
+
+//       const handleMouseEnter = () => {
+//         if (!rotateAnimation) {
+//           rotateAnimation = gsap.to(pinwheel, {
+//             rotation: 17979,
+//             repeat: -1,
+//             repeatDelay: 1,
+//             duration: 5,
+//             ease: "power4.inOut",
+//             startAt: { rotation: startRotation }
+//           })
+//         }
+//       }
+
+//       const handleMouseLeave = () => {
+//         destroyAnimation()
+
+//         const currentRotation = gsap.getProperty(pinwheel, "rotation") as number
+//         let duration = Math.abs(currentRotation - defaultRotation) / 3600
+//         duration = Math.min(Math.max(duration, 1), 5)
+
+//         gsap.to(pinwheel, {
+//           rotation: startRotation,
+//           duration,
+//           ease: "power4.out"
+//         })
+//       }
+
+//       const destroyAnimation = () => {
+//         if (rotateAnimation) {
+//           rotateAnimation.kill()
+//           rotateAnimation = null
+//         }
+//       }
+
+//       smoother.effects?.enable?.() // just in case
+
+//       smoother.scrollTrigger?.addEventListener?.("scroll", handleScroll)
+//       window.addEventListener("scroll", handleScroll) // fallback
+
+//       if (logo) {
+//         logo.addEventListener("mouseenter", handleMouseEnter)
+//         logo.addEventListener("mouseleave", handleMouseLeave)
+//       }
+//     })
+//   }
+
+//   return { initHeaderAnimation }
+// }

@@ -2,6 +2,9 @@
   <section class="lab content-section">
     <div class="custom-container grid">
       <div class="grid__col--full">
+        <div class="about__media">
+          <img :src="imageSrc" class="media__image" alt="Creative Developer">
+        </div>
         <!-- Title -->
         <div class="content-section__head">
           <h2 class="lab__title content-section__title scroll-js-title" data-splitting data-fx="perspective-opacity">
@@ -24,13 +27,13 @@
 
           <!-- Lab Cards -->
           <div class="lab__lists mt-14 md:mt-24">
-            <div class="lists lists--linkables scroll-js-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px]"
+            <div class="lists lists--linkables scroll-js-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-[20px]"
               data-fx="opacity">
               <div v-for="(lab, index) in labs" :key="index"
                 class="list__item-box  group relative overflow-hidden p-5 flex ">
 
-                <div class="flex flex-col justify-between gap-3">
-                  <div class="list__item-media">
+                <div class="flex flex-col justify-between gap-4">
+                  <div class="list__item-media mb-5">
                     <!-- Render SVG if available -->
                     <div v-if="lab.svg" class="media__svg" v-html="lab.svg"></div>
 
@@ -72,5 +75,7 @@
 </template>
 
 <script setup>
+import imageSrc from '/assets/Images/iteration.png'; // Importing from assets
+
 const { data: labs } = await useFetch('json/lab.json')
 </script>

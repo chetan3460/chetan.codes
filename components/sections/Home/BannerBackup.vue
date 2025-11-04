@@ -1,23 +1,31 @@
-<template>
-    <section class="hero-header relative  ">
-        <!-- Threads Background -->
-        <Threads class="hero-header__canvas" :color="[1, 1, 1]" :amplitude="2" :distance="0.4"
-            :enableMouseInteraction="true" />
-
-        <!-- Text Pressure -->
-        <div
-            class="absolute bottom-0 left-0 right-0 w-full h-full flex items-center justify-center pointer-events-none">
-            <TextPressure text="CREATIVE DEVELOPER" :flex="true" :alpha="false" :stroke="false" :width="false"
-                :weight="true" :italic="true" text-color="#ffffff" stroke-color="#27FF64" :min-font-size="100" />
+<!-- <template>
+    <section class="hero-header">
+        <div class="hero-header__particle-bg">
+            <ParticleImage
+                image-src="/assets/Images/me.jpeg"
+                :canvas-width="String(windowWidth)"
+                :canvas-height="String(windowHeight)"
+                color="#ffffff"
+                particle-size="2"
+                particle-gap="3"
+                gravity="0.05"
+                mouse-force="50"
+                init-position="none"
+                init-direction="none"
+            />
         </div>
-        <div class="hero-header__wrapper custom-container grid grid-cols-12 gap-[3.125rem] ">
 
+        <div class="hero-header__wrapper custom-container grid grid-cols-12 gap-[3.125rem] ">
+            <div class="hero-header__slogan">
+                <span class="hero-header__marquee">Creative Developer</span>
+                <span class="hero-header__marquee">Creative Developer</span>
+            </div>
             <div class="hero-header__bottom">
-                <h1 class="hero-header__description text-white" data-splitting>
+                <h1 class="hero-header__description" data-splitting>
                     Hey there, I'm Chetan Dhargalkar, Creative Developer <br />
                     based in Goa - India, dedicated to crafting <br />unforgettable experiences.
                 </h1>
-                <!-- <button class="hero-header__scroll" data-pointer="link" data-pointer-text="Scroll" title="Scroll Down"
+                <button class="hero-header__scroll" data-pointer="link" data-pointer-text="Scroll" title="Scroll Down"
                     aria-label="Scroll Down">
                     <span class="svg-data">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -26,15 +34,13 @@
                             </path>
                         </svg>
                     </span>
-                </button> -->
+                </button>
             </div>
         </div>
     </section>
-</template>
+</template> -->
 
-<script setup>
-import Threads from '~/components/ui/Threads.vue'
-import TextPressure from '~/components/ui/TextPressure.vue'
+<!-- <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import ParticleImage from '@/components/ParticleImage.vue'
 import { useHeroAnimations } from "@/composables/useHeroBanner";
@@ -46,37 +52,49 @@ const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920
 const windowHeight = ref(typeof window !== 'undefined' ? window.innerHeight : 1080)
 
 const handleResize = () => {
-    windowWidth.value = window.innerWidth
-    windowHeight.value = window.innerHeight
+  windowWidth.value = window.innerWidth
+  windowHeight.value = window.innerHeight
 }
 
 onMounted(() => {
-    window.addEventListener('resize', handleResize)
+  window.addEventListener('resize', handleResize)
 })
 
 onUnmounted(() => {
-    window.removeEventListener('resize', handleResize)
+  window.removeEventListener('resize', handleResize)
 })
-</script>
+</script> -->
 
+<!-- 
 <style>
-.hero-header__canvas {
-    background-color: transparent;
-    height: 100%;
-    left: -2px;
-    outline: none;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 0;
+.header__wrapper {
+
+    background: #000;
 }
+
+/* Hero Section */
 
 .hero-header {
     height: 100vh;
     height: 100svh;
     position: relative;
     width: 100vw;
+}
+
+.hero-header__particle-bg {
+    background-color: var(--canvas-bg);
+    height: 100%;
+    left: 0;
+    outline: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-header__particle-bg canvas {
+    pointer-events: auto;
 }
 
 .hero-header__wrapper {
@@ -222,4 +240,4 @@ onUnmounted(() => {
         top: -4.375rem;
     }
 }
-</style>
+</style> -->

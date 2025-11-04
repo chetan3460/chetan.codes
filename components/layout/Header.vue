@@ -1,9 +1,9 @@
 <template>
     <header class="header left-0 fixed top-0 w-full z-10">
         <div
-            class="custom-container header__wrapper w-full h-[6.25rem] bg-gray-300 backdrop-blur-[10px]   py-3 grid grid-cols-12 gap-4">
+            class="custom-container header__wrapper w-full h-[6.25rem]  backdrop-blur-[10px]   py-3 grid grid-cols-12 gap-4">
             <!-- Logo -->
-            <div class="header__block header__block--left flex items-center col-span-4 col-start-1 flex justify-start">
+            <div class="header__block header__block--left flex items-center col-span-4 col-start-1  justify-start">
                 <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1] w-[1.25rem] h-[2.5rem] overflow-hidden">
                         <span

@@ -3,6 +3,12 @@
         <LayoutHeader />
         <slot />
         <LayoutFooter />
-        <LayoutCursor />
+        <ClientOnly>
+            <SmoothCursor />
+        </ClientOnly>
     </main>
 </template>
+
+<script setup>
+import SmoothCursor from '~/components/layout/SmoothCursor.vue';
+</script>

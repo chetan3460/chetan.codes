@@ -3,7 +3,8 @@
         <div class="custom-container  grid grid-cols-12 gap-4">
             <div class="grid__col--full">
                 <div class="about__media">
-                    <img :src="imageSrc" class="media__image" alt="Alessio Atzeni - Creative Developer">
+                    <ParticleImage :image-src="imageSrc" canvas-width="200" canvas-height="200" mouse-force="50"
+                        gravity="0.08" :noise="2" />
                 </div>
                 <div class="content-section__head">
                     <h2 class="about__title content-section__title scroll-js-title" data-splitting
@@ -39,6 +40,8 @@
 
 <script setup>
 import imageSrc from '/assets/Images/me.jpeg'; // Importing from assets
+import ParticleImage from '@/components/ParticleImage.vue'
+
 import { useAnimations } from "@/composables/useAnimations";
 // useAnimations();
 // const { $splitting } = useNuxtApp();

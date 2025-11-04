@@ -1,0 +1,24 @@
+// utils/arsenal.js
+export const techArsenal = [
+  {
+    name: "Google",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 48 48">
+      <path fill="#fff" d="M24 4.05A19.95 19.95 0 1 0 24 43.95A19.95 19.95 0 1 0 24 4.05Z"></path>
+      <path fill="#01579b" d="M8.001,24..."></path>
+    </svg>`
+  },
+  {
+    name: "VueJS",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 48 48">
+      <polygon fill="#81c784" points="23.987,17 18.734,8 2.974,8 23.987,44 45,8 29.24,8"></polygon>
+      <polygon fill="#455a64" points="29.24,8 23.987,17 18.734,8 11.146,8 23.987,30 36.828,8"></polygon>
+    </svg>`
+  },
+  {
+    name: "Nuxt",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 48 48">
+      <path fill="#00bfa5" d="M14.262,39.569c..."></path>
+    </svg>`
+  }
+  // Add more icons as needed...
+]

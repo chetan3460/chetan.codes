@@ -1,16 +1,12 @@
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNuxtApp } from "#app";
 import { Sine, Back } from "gsap";
 
-// Register GSAP Plugin
-if (process.client) {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
 export function useAnimations() {
     const { $splitting } = useNuxtApp();
+    const scrollTriggers = [];
 
     function applySplitting() {
         $splitting(); // Apply text splitting
@@ -22,27 +18,28 @@ export function useAnimations() {
 
 
         elements.forEach((element) => {
-            gsap.fromTo(
-                element,
-                {
-                    'will-change': 'opacity, transform',
-                    opacity: 0,
-                    scale: 0,
-                    rotation: -50,
+        const tween = gsap.fromTo(
+            element,
+            {
+                'will-change': 'opacity, transform',
+                opacity: 0,
+                scale: 0,
+                rotation: -50,
+            },
+            {
+                ease: 'sine.inOut',
+                rotation: 10,
+                opacity: 0.5,
+                scale: 1,
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    end: 'bottom 50%',
+                    scrub: true,
                 },
-                {
-                    ease: 'sine.inOut',
-                    rotation: 10,
-                    opacity: 0.5,
-                    scale: 1,
-                    scrollTrigger: {
-                        trigger: element,
-                        start: 'top 85%',
-                        end: 'bottom 50%',
-                        scrub: true,
-                    },
-                }
-            )
+            }
+        )
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger)
         })
     }
 
@@ -73,7 +70,7 @@ export function useAnimations() {
 
         chars.forEach((char) => gsap.set(char.parentNode, { perspective: 1000 }));
 
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             chars,
             { opacity: 0, z: -800 },
             {
@@ -89,6 +86,7 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
     function effectTitleOverflowHorizontal(element) {
@@ -102,7 +100,7 @@ export function useAnimations() {
             wrapper.appendChild(char);
         });
 
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             chars,
             { xPercent: -100 },
             {
@@ -117,13 +115,14 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
     function effectTitleScaleWords(element) {
         const chars = element.querySelectorAll(".char");
         if (!chars.length) return;
 
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             chars,
             {
                 opacity: 0,
@@ -142,6 +141,7 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
     function contentAnimation() {
@@ -166,7 +166,7 @@ export function useAnimations() {
         const words = element.querySelectorAll(".word");
         if (!words.length) return;
 
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             words,
             { opacity: 0.1 },
             {
@@ -181,6 +181,7 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
     function effectContentOverflowHorizontal(element) {
@@ -194,7 +195,7 @@ export function useAnimations() {
             wrapper.appendChild(char);
         });
 
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             chars,
             { xPercent: -100 },
             {
@@ -209,6 +210,7 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
     function listAnimation() {
@@ -223,7 +225,7 @@ export function useAnimations() {
         const items = element.querySelectorAll(".list__item-box");
         if (!items.length) return;
 
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             items,
             { opacity: 0 },
             {
@@ -238,6 +240,7 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
     onMounted(() => {
@@ -246,6 +249,11 @@ export function useAnimations() {
         headingAnimation();
         contentAnimation();
         listAnimation();
+    });
+
+    onUnmounted(() => {
+        // Cleanup all ScrollTrigger instances to prevent memory leaks
+        scrollTriggers.forEach(st => st.kill());
     });
 }
 

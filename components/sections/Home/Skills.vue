@@ -1,220 +1,26 @@
 <template>
-  <section class=" content-section">
+  <section class="content-section">
     <div class="custom-container grid grid-cols-12 gap-4">
       <div class="grid__col--full">
         <div class="about__media">
-
           <img :src="imageSrc" class="media__image" alt="">
-
         </div>
         <div class="content-section__head">
           <h2 class="works__title content-section__title scroll-js-title" data-splitting data-fx="perspective-opacity">
             My Tech Arsenal</h2>
-
           <span class="works__decorative content-section__decorative scroll-js-title" data-splitting
             data-fx="scale-words">Skills</span>
         </div>
-        <div class="mwg_effect000" ref="root">
-          <div class="medias">
-
-            <!-- 1 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor">
-                  <path fill="#41b883" d="M24.4 3.925H30l-14 24.15L2 3.925h10.71l3.29 5.6 3.22-5.6z"></path>
-                  <path fill="#41b883" d="M2 3.925l14 24.15 14-24.15h-5.6L16 18.415 7.53 3.925z"></path>
-                  <path fill="#35495e" d="M7.53 3.925L16 18.485l8.4-14.56h-5.18L16 9.525l-3.29-5.6z"></path>
-                </svg>
-              </div>
+        <div class="min-h-[600px] overflow-hidden relative py-12">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto px-8">
+            <div v-for="(icon, index) in skillIcons" :key="index"
+              class="skill-card-wrapper flex flex-col items-center justify-center">
+              <ParticleImage :image-src="icon.src" canvas-width="300" canvas-height="300" mouse-force="50"
+                gravity="0.08" :noise="5" />
             </div>
-
-            <!-- 2 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor" style="font-size: 1.2em;">
-                  <path fill="#00c58e"
-                    d="M10.648 25.734a1.465 1.465 0 01-.157-.942H3.847l9.869-17.375 4.159 7.41 1.308-.976-4.107-7.384A1.752 1.752 0 0013.7 5.56a1.531 1.531 0 00-1.343.924l-10 17.593a1.729 1.729 0 00-.087 1.656 1.526 1.526 0 001.456.706H12.1a1.523 1.523 0 01-1.456-.7z">
-                  </path>
-                  <path fill="#108775"
-                    d="M29.636 24.112L21.589 9.823a1.692 1.692 0 00-1.351-.907 1.489 1.489 0 00-1.308.907l-1.064 1.7v3.3l2.371-4.071 7.951 14.071h-3.025a1.377 1.377 0 01-.122.837l-.026.052a1.729 1.729 0 01-1.456.732h4.734a1.72 1.72 0 001.456-.732 1.548 1.548 0 00-.122-1.6z">
-                  </path>
-                  <path fill="#2f495e"
-                    d="M25.233 25.7l.026-.052.07-.139a1.278 1.278 0 00.061-.7 2.11 2.11 0 00-.27-.724l-6.286-10.9-.95-1.656h-.017l-.959 1.648-6.277 10.9a2.18 2.18 0 00-.244.715 1.438 1.438 0 00.148.942 1.563 1.563 0 001.482.7h11.708a1.79 1.79 0 001.508-.741zm-7.367-10.864L23.62 24.8H12.112z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor">
-                  <path fill="#f5de19" d="M2 2h28v28H2z"></path>
-                  <path
-                    d="M20.809 23.875a2.866 2.866 0 002.6 1.6c1.09 0 1.787-.545 1.787-1.3 0-.9-.716-1.222-1.916-1.747l-.658-.282c-1.9-.809-3.16-1.822-3.16-3.964 0-1.973 1.5-3.476 3.853-3.476a3.889 3.889 0 013.742 2.107L25 18.128A1.789 1.789 0 0023.311 17a1.145 1.145 0 00-1.259 1.128c0 .789.489 1.109 1.618 1.6l.658.282c2.236.959 3.5 1.936 3.5 4.133 0 2.369-1.861 3.667-4.36 3.667a5.055 5.055 0 01-4.795-2.691zm-9.295.228c.413.733.789 1.353 1.693 1.353.864 0 1.41-.338 1.41-1.653v-8.947h2.631v8.982c0 2.724-1.6 3.964-3.929 3.964a4.085 4.085 0 01-3.947-2.4z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- 4 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor" style="font-size: 1.2em;">
-                  <path fill="url(#vat-1)"
-                    d="M29.884 6.146l-13.142 23.5a.714.714 0 01-1.244.005L2.096 6.148a.714.714 0 01.746-1.057l13.156 2.352a.714.714 0 00.253 0l12.881-2.348a.714.714 0 01.752 1.05z">
-                  </path>
-                  <path fill="url(#vat-4)"
-                    d="M22.264 2.007L12.54 3.912a.357.357 0 00-.288.33l-.598 10.104a.357.357 0 00.437.369l2.707-.625a.357.357 0 01.43.42l-.804 3.939a.357.357 0 00.454.413l1.672-.508a.357.357 0 01.454.414l-1.279 6.187c-.08.387.435.598.65.267l.143-.222 7.925-15.815a.357.357 0 00-.387-.51l-2.787.537a.357.357 0 01-.41-.45l1.818-6.306a.357.357 0 00-.412-.45z">
-                  </path>
-                  <defs id="vat-0">
-                    <linearGradient id="vat-1" x1="6" x2="235" y1="33" y2="344"
-                      gradientTransform="translate(1.34 1.894) scale(.07142)" gradientUnits="userSpaceOnUse">
-                      <stop id="vat-2" stop-color="#41D1FF"></stop>
-                      <stop id="vat-3" offset="1" stop-color="#BD34FE"></stop>
-                    </linearGradient>
-                    <linearGradient id="vat-4" x1="194.651" x2="236.076" y1="8.818" y2="292.989"
-                      gradientTransform="translate(1.34 1.894) scale(.07142)" gradientUnits="userSpaceOnUse">
-                      <stop id="vat-5" stop-color="#FFEA83"></stop>
-                      <stop id="vat-6" offset=".083" stop-color="#FFDD35"></stop>
-                      <stop id="vat-7" offset="1" stop-color="#FFA800"></stop>
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-
-            <!-- 5 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="0 0 512 512" fill="#21759b">
-                  <path
-                    d="M259 271.3L226.2 367h-.1l-25.4 73.1c1.8.5 3.5.9 5.3 1.4h.3a192.51 192.51 0 0049.5 6.5 157 157 0 0024.9-1.8 184.3 184.3 0 0032.5-7.1c2.6-.8 5.2-1.7 7.8-2.6-2.8-6-8.8-19.3-9.1-19.9zM80.8 180.5C70.8 203.1 64 230.9 64 256c0 6.3.3 12.6.9 18.8 6.9 71.2 52.9 131 116.1 157.9 2.6 1.1 5.3 2.2 8 3.2L96 180.6c-8-.3-9.5.2-15.2-.1z">
-                  </path>
-                  <path
-                    d="M430.2 175.4a188 188 0 00-15.1-26.6c-1.6-2.4-3.4-4.8-5.1-7.2A193 193 0 00325.1 77a189.2 189.2 0 00-69.2-13 191.51 191.51 0 00-149.4 71.7A196 196 0 0089 161.3c14.2.1 31.8.1 33.8.1 18.1 0 46-2.2 46-2.2 9.4-.6 10.4 13.1 1.1 14.2 0 0-9.4 1.1-19.8 1.6L213 362l37.8-113.3-26.8-73.6c-9.4-.5-18.1-1.6-18.1-1.6-9.4-.5-8.2-14.8 1-14.2 0 0 28.5 2.2 45.5 2.2 18.1 0 46-2.2 46-2.2 9.3-.6 10.5 13.1 1.1 14.2 0 0-9.3 1.1-19.7 1.6l62.3 185.6 17.3-57.6c8.7-22.4 13.1-40.9 13.1-55.7 0-21.3-7.7-36.1-14.3-47.6-8.7-14.3-16.9-26.3-16.9-40.4 0-15.9 12-30.7 29-30.7h2.2c26.2-.7 34.8 25.3 35.9 43v.6c.4 7.2.1 12.5.1 18.8 0 17.4-3.3 37.1-13.1 61.8l-39 112.8-22.3 65.7c1.8-.8 3.5-1.6 5.3-2.5 56.7-27.4 98-82 106.7-146.7a172.07 172.07 0 001.9-26 191.11 191.11 0 00-17.8-80.8z">
-                  </path>
-                  <path
-                    d="M256 48a208.06 208.06 0 0181 399.66A208.06 208.06 0 01175 64.34 206.7 206.7 0 01256 48m0-16C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- 6 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-3.2 -3.2 38.4 38.4"
-                  fill="#186dae" style="font-size: 1.2em;">
-                  <path
-                    d="M2.047 7.833c-2.833 4.068-2.479 9.354-.318 13.672.052.109.104.208.156.307.031.068.068.135.104.198a.775.775 0 00.063.109c.036.073.073.135.109.203l.208.354c.036.068.078.13.12.193.073.125.161.25.234.375.036.052.068.104.104.156.13.203.271.401.417.594.104.141.208.281.318.422.036.047.078.099.115.151l.297.359c.036.042.068.089.109.13.13.156.271.313.406.464 0 .005.005.005.005.01.172.214.359.411.568.589.109.109.214.219.328.323l.135.13c.146.141.292.276.448.411.005 0 .005 0 .01.005l.073.063c.135.12.276.24.417.349l.167.141c.109.089.229.177.344.266l.182.141c.125.094.255.182.38.276.047.031.094.068.146.094l.036.031.375.25.161.104c.193.125.391.245.583.365.057.026.109.057.161.089.146.083.297.167.443.245.078.047.161.083.245.125.099.057.203.109.307.167a.254.254 0 01.078.031l.125.063c.161.078.328.156.5.229.031.016.068.026.104.047.193.083.38.167.583.245.042.01.089.036.135.052.182.068.37.135.552.203l.063.021c.208.073.406.135.615.203.047.01.099.031.146.042.214.068.417.141.63.182 13.682 2.495 17.656-8.224 17.656-8.224-3.339 4.349-9.266 5.495-14.88 4.219-.208-.047-.411-.115-.625-.177-.25-.073-.505-.156-.755-.24l-.083-.031c-.177-.063-.354-.13-.531-.198-.047-.021-.099-.036-.146-.057a17.506 17.506 0 01-.578-.24c-.042-.016-.073-.036-.115-.052-.161-.073-.323-.146-.484-.224a1.893 1.893 0 01-.141-.073c-.125-.057-.25-.125-.375-.188-.083-.042-.167-.083-.245-.125l-.453-.25a1.497 1.497 0 00-.151-.089c-.198-.12-.391-.24-.583-.359-.052-.031-.104-.068-.156-.104a12.03 12.03 0 01-.417-.276 2.021 2.021 0 01-.135-.099 7.115 7.115 0 01-.396-.281c-.057-.047-.115-.089-.177-.135-.115-.089-.234-.177-.349-.276l-.161-.125c-.151-.12-.297-.245-.443-.375-.016-.016-.031-.026-.052-.042l-.458-.417-.135-.125c-.109-.115-.219-.219-.333-.328l-.13-.135a10.546 10.546 0 01-.411-.432l-.021-.021c-.141-.151-.276-.313-.417-.469-.036-.042-.068-.089-.104-.13l-.302-.37a17.106 17.106 0 01-.453-.599C2.88 15.715 1.755 9.85 4.245 5.038zm8.781-3.427c-2.052 2.948-1.938 6.885-.339 10 .266.521.568 1.026.901 1.51.307.438.646.958 1.057 1.313.141.161.297.318.458.479l.12.12c.151.146.307.292.469.432l.021.021c.177.156.359.307.552.453.042.031.083.068.125.099.188.141.375.281.568.417l.021.016c.083.057.172.115.266.172.036.026.078.057.12.078.141.094.281.177.422.266.026.01.042.021.063.031.12.073.255.141.38.208.042.026.083.047.13.073.089.042.177.089.26.135l.047.016c.177.089.359.172.542.255a13.777 13.777 0 00.568.234c.068.021.13.047.193.068.135.052.281.099.417.146l.182.057c.198.063.396.141.599.172 10.563 1.75 13.005-6.38 13.005-6.38-2.203 3.167-6.458 4.677-11 3.5-.203-.052-.401-.115-.599-.177-.063-.016-.12-.036-.182-.052-.135-.052-.281-.099-.411-.146l-.193-.073c-.151-.063-.302-.115-.448-.182-.047-.021-.089-.031-.12-.052a17.76 17.76 0 01-.557-.255l-.276-.146-.156-.078a5.635 5.635 0 01-.354-.198 1.23 1.23 0 01-.083-.047c-.141-.089-.286-.172-.422-.266a1.067 1.067 0 01-.13-.083l-.276-.177c-.193-.135-.38-.281-.573-.417a1.043 1.043 0 00-.125-.104c-1.995-1.573-3.568-3.719-4.318-6.146-.786-2.526-.609-5.359.745-7.656zm7.386-2.562c-1.208 1.776-1.328 3.984-.495 5.943.885 2.078 2.698 3.714 4.807 4.484.089.036.172.063.26.094l.115.036c.125.036.25.083.375.115 5.833 1.125 7.411-3 7.839-3.604-1.391 1.995-3.719 2.474-6.578 1.781a8.763 8.763 0 01-1.511-.553 9.059 9.059 0 01-1.438-.88c-2.563-1.943-4.146-5.641-2.474-8.656z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- 7 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-3.2 -3.2 38.4 38.4"
-                  fill="#7611f6" style="font-size: 1.2em;">
-                  <path
-                    d="M26.667 0H5.334A5.35 5.35 0 00.001 5.333v21.333c0 2.932 2.401 5.333 5.333 5.333h21.333c2.932 0 5.333-2.401 5.333-5.333V5.333C32 2.401 29.599 0 26.667 0zM23.75 22.474a4.18 4.18 0 01-1.229 1.646c-.563.453-1.271.828-2.146 1.094-.87.271-1.906.406-3.109.406H8.693V6.953h9.068c1.677 0 3.021.375 4.026 1.146 1.016.771 1.516 1.927 1.516 3.479 0 .943-.229 1.745-.688 2.411s-1.12 1.182-1.974 1.542v.063c1.141.24 2.021.781 2.599 1.62s.88 1.901.88 3.182a5.34 5.34 0 01-.401 2.036l.031.036zm-3.703-4.599c-.542-.5-1.313-.745-2.302-.745h-5.766v5.823h5.781c.984 0 1.76-.255 2.307-.771s.823-1.25.823-2.188c-.01-.922-.276-1.635-.823-2.12h-.026zm-.797-3.766c.526-.448.786-1.089.786-1.927 0-.938-.234-1.604-.708-1.984-.469-.38-1.146-.578-2.036-.578h-5.333v5.151h5.333c.776 0 1.443-.229 1.953-.661z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-            <!-- 8 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor" style="font-size: 1.2em;">
-                  <path fill="#1572b6" d="M5.902 27.201L3.656 2h24.688l-2.249 25.197L15.985 30 5.902 27.201z"></path>
-                  <path fill="#33a9dc" d="M16 27.858l8.17-2.265 1.922-21.532H16v23.797z"></path>
-                  <path fill="#fff" d="M16 13.191h4.09l.282-3.165H16V6.935h7.75l-.074.829-.759 8.518H16v-3.091z"></path>
-                  <path fill="#ebebeb"
-                    d="M16.019 21.218l-.014.004-3.442-.93-.22-2.465H9.24l.433 4.853 6.331 1.758.015-.004v-3.216z">
-                  </path>
-                  <path fill="#fff"
-                    d="M19.827 16.151l-.372 4.139-3.447.93v3.216l6.336-1.756.047-.522.537-6.007h-3.101z"></path>
-                  <path fill="#ebebeb"
-                    d="M16.011 6.935v3.091H8.545l-.062-.695-.141-1.567-.074-.829h7.743zM16 13.191v3.091H12.601l-.062-.695-.14-1.567-.074-.829H16z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-            <!-- 9 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor" style="font-size: 1.2em;">
-                  <path fill="#c69" fill-rule="evenodd" d="M16 2A14 14 0 112 16 14 14 0 0116 2z"></path>
-                  <path fill="#fff"
-                    d="M24.782 7.992c-.634-2.486-4.757-3.3-8.659-1.918a19.605 19.605 0 00-6.644 3.811c-2.149 2.01-2.492 3.76-2.351 4.491.5 2.58 4.033 4.266 5.486 5.517v.007c-.428.211-3.564 1.8-4.3 3.42-.774 1.712.123 2.94.718 3.105A4.4 4.4 0 0013.78 24.5a4.824 4.824 0 00.472-4.288 5.639 5.639 0 012.143-.123c2.456.287 2.938 1.82 2.846 2.462a1.62 1.62 0 01-.779 1.1c-.172.107-.225.143-.21.223.021.115.1.111.247.086a1.915 1.915 0 001.336-1.707c.059-1.5-1.382-3.186-3.934-3.143a6.736 6.736 0 00-2.189.3 5.844 5.844 0 00-.108-.12c-1.578-1.683-4.494-2.874-4.371-5.137.045-.823.331-2.989 5.6-5.617 4.32-2.153 7.778-1.56 8.376-.247.854 1.876-1.848 5.361-6.334 5.864a3.37 3.37 0 01-2.833-.718c-.236-.26-.271-.271-.359-.223-.143.079-.052.309 0 .445a2.659 2.659 0 001.621 1.274 8.592 8.592 0 005.258-.52c2.721-1.049 4.843-3.974 4.22-6.419zM13.218 20.663a3.584 3.584 0 01-.029 2.092q-.035.106-.077.21t-.091.2a3.911 3.911 0 01-.647.943c-.813.887-1.95 1.223-2.437.94-.526-.305-.263-1.556.68-2.553a9.478 9.478 0 012.474-1.762z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-            <!-- 10 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor" style="font-size: 1.2em;">
-                  <path fill="#e44f26" d="M5.902 27.201L3.655 2h24.69l-2.25 25.197L15.985 30 5.902 27.201z"></path>
-                  <path fill="#f1662a" d="M16 27.858l8.17-2.265 1.922-21.532H16v23.797z"></path>
-                  <path fill="#ebebeb"
-                    d="M16 13.407h-4.09l-.282-3.165H16V7.151H8.25l.074.83.759 8.517H16v-3.091zM16 21.434l-.014.004-3.442-.929-.22-2.465H9.221l.433 4.852 6.332 1.758.014-.004v-3.216z">
-                  </path>
-                  <path fill="#fff"
-                    d="M15.989 13.407v3.091h3.806l-.358 4.009-3.448.93v3.216l6.337-1.757.046-.522.726-8.137.076-.83H15.989zM15.989 7.151V10.242h7.466l.062-.694.141-1.567.074-.83h-7.743z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-            <!-- 11 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-3 -3 30 30" fill="#0052cc"
-                  style="font-size: 1.2em;">
-                  <path
-                    d="M11.999 0C6.756 0 2.474 4.245 2.474 9.525c0 4.21 2.769 7.792 6.572 9.047v4.764c0 .37.295.664.664.664h4.506a.661.661 0 00.664-.664v-4.764c.025-.008.049-.019.074-.027v.064c3.694-1.22 6.412-4.634 6.565-8.687.005-.124.007-.25.007-.375v-.022c0-.152-.006-.304-.013-.455C21.275 4.037 17.125 0 11.999 0zm0 6.352a3.214 3.214 0 012.664 5.005v.002A3.218 3.218 0 0112 12.775a3.212 3.212 0 010-6.424z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-            <!-- 12 -->
-            <div class="media">
-              <div class="svg-icon">
-                <svg class="ov-icon" aria-hidden="true" width="19.2" height="19.2" viewBox="-0.64 -0.64 33.28 33.28"
-                  fill="currentColor" style="font-size: 1.2em;">
-                  <path fill="#c69" fill-rule="evenodd" d="M16 2A14 14 0 112 16 14 14 0 0116 2z"></path>
-                  <path fill="#fff"
-                    d="M24.782 7.992c-.634-2.486-4.757-3.3-8.659-1.918a19.605 19.605 0 00-6.644 3.811c-2.149 2.01-2.492 3.76-2.351 4.491.5 2.58 4.033 4.266 5.486 5.517v.007c-.428.211-3.564 1.8-4.3 3.42-.774 1.712.123 2.94.718 3.105A4.4 4.4 0 0013.78 24.5a4.824 4.824 0 00.472-4.288 5.639 5.639 0 012.143-.123c2.456.287 2.938 1.82 2.846 2.462a1.62 1.62 0 01-.779 1.1c-.172.107-.225.143-.21.223.021.115.1.111.247.086a1.915 1.915 0 001.336-1.707c.059-1.5-1.382-3.186-3.934-3.143a6.736 6.736 0 00-2.189.3 5.844 5.844 0 00-.108-.12c-1.578-1.683-4.494-2.874-4.371-5.137.045-.823.331-2.989 5.6-5.617 4.32-2.153 7.778-1.56 8.376-.247.854 1.876-1.848 5.361-6.334 5.864a3.37 3.37 0 01-2.833-.718c-.236-.26-.271-.271-.359-.223-.143.079-.052.309 0 .445a2.659 2.659 0 001.621 1.274 8.592 8.592 0 005.258-.52c2.721-1.049 4.843-3.974 4.22-6.419zM13.218 20.663a3.584 3.584 0 01-.029 2.092q-.035.106-.077.21t-.091.2a3.911 3.911 0 01-.647.943c-.813.887-1.95 1.223-2.437.94-.526-.305-.263-1.556.68-2.553a9.478 9.478 0 012.474-1.762z">
-                  </path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/03.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/04.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/05.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/06.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/07.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/08.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/09.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/10.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/11.png" alt=""></div>
-            <div class="media"><img src="https://madewithgsap.com/effects/000/assets/medias/12.png" alt=""></div> -->
           </div>
-          <!-- <div class="medias">
-            <div v-for="(img, i) in images" :key="i" class="media">
-              <img :src="img" :alt="`Image ${i + 1}`" />
-            </div>
-          </div> -->
+
+
         </div>
       </div>
 
@@ -222,6 +28,8 @@
     </div>
   </section>
 </template>
+
+
 
 <style>
 .medias {
@@ -232,119 +40,39 @@
   .media:nth-child(7),
   .media:nth-child(10),
   .media:nth-child(12) {
-    background-color: #fff;
+    background-color: transparent;
   }
 }
 </style>
 
 <script setup>
-import imageSrc from '/assets/Images/coding.png'; // Importing from assets
-import { onMounted, ref } from 'vue'
-import { gsap } from 'gsap'
-import { InertiaPlugin } from 'gsap/InertiaPlugin'
+import imageSrc from '/assets/Images/coding.png';
+import { onMounted } from 'vue'
+import ParticleImage from '@/components/ParticleImage.vue'
 import { useAnimations } from "@/composables/useAnimations";
 
 useAnimations();
 const { $splitting } = useNuxtApp();
 
-onMounted(() => {
-  $splitting();
-});
-
-
-// Register GSAP plugin on the client
-if (process.client) {
-  gsap.registerPlugin(InertiaPlugin)
-}
-
-const root = ref(null)
+const skillIcons = [
+  { src: '/assets/Images/skills/icons8-wordpress-2-100.png', name: 'WordPress' },
+  { src: '/assets/Images/skills/icons8-vue.js-100.png', name: 'Vue.js' },
+  { src: '/assets/Images/skills/icons8-nuxt-js-100.png', name: 'Nuxt.js' },
+  { src: '/assets/Images/skills/icons8-javascript-100.png', name: 'JavaScript' },
+  { src: '/assets/Images/skills/image.png', name: 'Image' },
+  { src: '/assets/Images/skills/icons8-vite-100.png', name: 'Vite' },
+]
 
 onMounted(() => {
-
-  let oldX = 0,
-    oldY = 0,
-    deltaX = 0,
-    deltaY = 0
-
-  if (!root.value) return
-
-  root.value.addEventListener('mousemove', (e) => {
-    deltaX = e.clientX - oldX
-    deltaY = e.clientY - oldY
-    oldX = e.clientX
-    oldY = e.clientY
-  })
-
-  root.value.querySelectorAll('.media').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      const tl = gsap.timeline({
-        onComplete: () => tl.kill()
-      })
-
-      tl.timeScale(1.2)
-
-      const image = el.querySelector('.svg-icon')
-
-      tl.to(image, {
-        inertia: {
-          x: {
-            velocity: deltaX * 30,
-            end: 0
-          },
-          y: {
-            velocity: deltaY * 30,
-            end: 0
-          }
-        }
-      })
-
-      tl.fromTo(image, {
-        rotate: 0
-      }, {
-        duration: 0.4,
-        rotate: (Math.random() - 0.5) * 30,
-        yoyo: true,
-        repeat: 1,
-        ease: 'power1.inOut'
-      }, '<')
-    })
-  })
   $splitting();
-
-
-
-
 })
 </script>
 <style>
-.mwg_effect000 {
-  /* height: 100vh; */
-  overflow: hidden;
+.skill-card-wrapper {
   position: relative;
-  display: grid;
-  place-items: center;
-}
-
-.mwg_effect000 .medias {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-
-.mwg_effect000 .medias .svg-icon {
-  width: 15vw;
-  height: 15vw;
-  object-fit: contain;
-  display: block;
-  pointer-events: none;
-  will-change: transform;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 100px;
-    height: 100px;
-  }
+  max-width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 </style>

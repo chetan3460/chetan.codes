@@ -45,6 +45,12 @@ export default defineNuxtConfig({
     ],
   },
   app: {
+    head: {
+      title: 'chetan.codes',
+      meta: [
+        { name: 'description', content: 'Creative portfolio of Chetan Dhargalkar' },
+      ],
+    },
     script: [{ src: '/js/window.js' }], // ✅ Still okay from /public
   },
 

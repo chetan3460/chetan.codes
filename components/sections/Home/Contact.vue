@@ -2,10 +2,28 @@
     <section class="contact content-section s is--footer">
         <div class="custom-container grid">
             <div class="grid__col--full">
-                <a class="contact__link" href="mailto:info@alessioatzeni.com" title="Contact Me" data-pointer="link"
-                    data-pointer-text="Say Hi! 🤗">
-                    <h2 class="contact__title !font-outfit">Let's Talk</h2>
-                </a>
+                <div class="relative">
+                    <div class="prism-background" style="position: absolute; inset: 0; width: 100%; height: 600px;">
+                        <Prism
+                            animation-type="rotate"
+                            :time-scale="0.3"
+                            :height="3.5"
+                            :base-width="5.5"
+                            :scale="3.6"
+                            :hue-shift="0.2"
+                            :color-frequency="1.2"
+                            :noise="0.3"
+                            :glow="1.2"
+                            :bloom="0.8"
+                        />
+                    </div>
+                    <div style="position: relative; z-index: 10;">
+                        <a class="contact__link" href="mailto:info@alessioatzeni.com" title="Contact Me" data-pointer="link"
+                            data-pointer-text="Say Hi! 🤗">
+                            <h2 class="contact__title !font-outfit">Let's Talk</h2>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="w-layout-grid footer__overlay-w">
@@ -81,6 +99,7 @@
 import { onMounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Prism from "~/components/ui/Prism.vue";
 
 // Register GSAP Plugin
 if (process.client) {
@@ -189,7 +208,7 @@ onMounted(() => {
 </script>
 <style>
 .contact__title {
-    color: var(--col-text);
+    color: #fff;
     display: grid;
     font-size: 16vw;
     font-weight: 900;
@@ -202,7 +221,7 @@ onMounted(() => {
 }
 
 .contact__title span {
-    background-color: #000;
+    background-color: #080618;
     color: #d8d2cf;
     grid-area: 1 / 1 / 2 / 2;
     line-height: .839;
@@ -231,5 +250,15 @@ onMounted(() => {
 
 .footer__overlay {
     background-color: #1fa5fd;
+}
+
+@media (hover: hover) and (pointer:fine) {
+    .contact__link span:last-child {
+        transition: color .45s ease
+    }
+
+    .contact__link:hover span:last-child {
+        color: var(--col-accent)
+    }
 }
 </style>

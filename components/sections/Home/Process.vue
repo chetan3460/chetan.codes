@@ -27,13 +27,16 @@
 
           <!-- Lab Cards -->
           <div class="lab__lists mt-14 md:mt-24">
-            <div class="lists lists--linkables scroll-js-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-[20px]"
+            <div class="lists lists--linkables scroll-js-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
               data-fx="opacity">
               <div v-for="(lab, index) in labs" :key="index"
-                class="list__item-box  group relative overflow-hidden p-5 flex ">
+                class="list__item-box  group relative overflow-hidden  flex ">
 
-                <div class="flex flex-col justify-between gap-4">
-                  <div class="list__item-media mb-5">
+                <div class="flex flex-col justify-between gap-6">
+                  <div class="list__item-media flex items-center  gap-4 justify-between">
+                    <h3 class="text-4xl !font-outfit font-medium">
+                      {{ lab.title }}
+                    </h3>
                     <!-- Render SVG if available -->
                     <div v-if="lab.svg" class="media__svg" v-html="lab.svg"></div>
 
@@ -43,9 +46,7 @@
                   </div>
 
                   <div class="flex flex-col justify-between gap-2">
-                    <h3 class="text-4xl !font-outfit font-medium">
-                      {{ lab.title }}
-                    </h3>
+
                     <p class="text-2xl">
                       {{ lab.description }}
                     </p>
@@ -55,8 +56,8 @@
 
 
                 <!-- Border Layer -->
-                <div class="absolute inset-0 w-full h-full border border-[#1fa5fd] rounded-sm  pointer-events-none">
-                </div>
+                <!-- <div class="absolute inset-0 w-full h-full border border-[#1fa5fd] rounded-sm  pointer-events-none">
+                </div> -->
 
                 <!-- Hover Background Layer -->
                 <div
@@ -66,6 +67,9 @@
 
             </div>
           </div>
+
+
+
         </div>
       </div>
     </div>

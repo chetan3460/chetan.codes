@@ -1,12 +1,7 @@
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNuxtApp } from "#app";
-
-// Register GSAP Plugin
-if (process.client) {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 export function useHeroAnimations() {
     const { $splitting } = useNuxtApp();
@@ -14,6 +9,7 @@ export function useHeroAnimations() {
     let heroTitle;
     let heroChars;
     let heroButton;
+    let heroScrollTrigger = null;
 
     function setupElements() {
         headerBlocks = gsap.utils.toArray(".header__block");
@@ -58,7 +54,7 @@ export function useHeroAnimations() {
     }
 
     function scrollHeroElementsAnimation() {
-        gsap.timeline({
+        const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: heroTitle,
                 start: "top bottom-=35%",
@@ -86,6 +82,8 @@ export function useHeroAnimations() {
                 scale: 0,
                 stagger: { each: 0.005, from: "end" },
             }, 0);
+        
+        heroScrollTrigger = timeline.scrollTrigger;
     }
 
     onMounted(() => {
@@ -95,6 +93,13 @@ export function useHeroAnimations() {
             startHeroElementsAnimation();
             scrollHeroElementsAnimation();
             ScrollTrigger.refresh();
+        }
+    });
+
+    onUnmounted(() => {
+        // Cleanup ScrollTrigger instance to prevent memory leaks
+        if (heroScrollTrigger) {
+            heroScrollTrigger.kill();
         }
     });
 }

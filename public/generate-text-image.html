@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Text Image</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 2px solid #333;
+            margin: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #1fa5fd;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1890e0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate "CREATIVE DEVELOPER" Image</h1>
+    <canvas id="textCanvas" width="1600" height="400"></canvas>
+    <button onclick="downloadImage()">Download Image</button>
+    
+    <script>
+        const canvas = document.getElementById('textCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fill with transparent background
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Set text properties
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 160px Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Draw text in UPPERCASE
+        ctx.fillText('CREATIVE DEVELOPER', canvas.width / 2, canvas.height / 2);
+        
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'creative-developer.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        console.log('Canvas ready! Click the button to download.');
+    </script>
+</body>
+</html>

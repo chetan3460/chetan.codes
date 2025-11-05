@@ -1,9 +1,9 @@
 <template>
     <header class="header left-0 fixed top-0 w-full z-10">
-        <div
-            class="custom-container header__wrapper w-full h-[6.25rem]  backdrop-blur-[10px]   py-3 grid grid-cols-12 gap-4">
+        <div class="container-fluid header__wrapper w-full   backdrop-blur-[10px]   py-5 grid grid-cols-12 gap-4">
             <!-- Logo -->
-            <div class="header__block header__block--left flex items-center col-span-4 col-start-1  justify-start">
+            <div
+                class="header__block header__block--left flex items-center col-span-8 lg:col-span-4 col-start-1  justify-start">
                 <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1] w-[1.25rem] h-[2.5rem] overflow-hidden">
                         <span
@@ -50,7 +50,8 @@
             </div>
 
             <!--Name  -->
-            <div class="header__block header__block--center col-span-4 col-start-5 flex justify-center items-center">
+            <div
+                class="header__block header__block--center hidden lg:block col-span-8 lg:col-span-4 col-start-5 flex justify-center items-center">
                 <div class="header__version">
                     <span class="">
                         Portfolio <b class="text-[var(--col-accent)]">'25</b>
@@ -58,7 +59,8 @@
                 </div>
             </div>
             <!-- Icon -->
-            <div class="header__block header__block--right items-center  col-span-4 col-start-9 flex justify-end ">
+            <div
+                class="hidden header__block header__block--right items-center  col-span-4 col-start-9 flex justify-end ">
                 <button class="header__colors  h-[2.75rem] left-[.5rem] relative w-[2.75rem]" data-pointer="simple"
                     title="Theme Switcher" aria-label="Theme Dark">
                     <span

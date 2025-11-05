@@ -1,11 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @tailwind utilities;
 
 /* Custom CSS */
 @theme {
-  --font-body: "Outfit", sans-serif;
-  --font-outfit: "Outfit", sans-serif;
-  --font-cormorant: "Cormorant Garamond", serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
 
   /* Color */
   --preloader-bg: #fff;
@@ -177,9 +177,9 @@ h6 {
 }
 
 :root {
-  font-family: "Outfit", sans-serif;
+  font-family: 'Outfit', sans-serif;
   --size: 1200;
-  
+
   /* Inspira UI Variables */
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -237,7 +237,7 @@ body .site-main {
 
 body .site-main:before {
   background-color: var(--col-bg-fake);
-  content: "";
+  content: '';
   height: 100%;
   left: 0;
   position: absolute;
@@ -251,6 +251,9 @@ body .site-main:before {
     padding: 0 2rem;
     margin: 0 auto;
     width: 100%;
+  }
+  .container-fluid {
+    @apply w-full p-4 md:px-8;
   }
 }
 @layer components {

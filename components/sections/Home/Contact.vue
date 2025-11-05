@@ -3,26 +3,10 @@
         <div class="custom-container grid">
             <div class="grid__col--full">
                 <div class="relative">
-                    <div class="prism-background" style="position: absolute; inset: 0; width: 100%; height: 600px;">
-                        <Prism
-                            animation-type="rotate"
-                            :time-scale="0.3"
-                            :height="3.5"
-                            :base-width="5.5"
-                            :scale="3.6"
-                            :hue-shift="0.2"
-                            :color-frequency="1.2"
-                            :noise="0.3"
-                            :glow="1.2"
-                            :bloom="0.8"
-                        />
-                    </div>
-                    <div style="position: relative; z-index: 10;">
-                        <a class="contact__link" href="mailto:info@alessioatzeni.com" title="Contact Me" data-pointer="link"
-                            data-pointer-text="Say Hi! 🤗">
-                            <h2 class="contact__title !font-outfit">Let's Talk</h2>
-                        </a>
-                    </div>
+                    <a class="contact__link" href="mailto:info@alessioatzeni.com" title="Contact Me" data-pointer="link"
+                        data-pointer-text="Say Hi! 🤗">
+                        <h2 class="contact__title !font-outfit">Let's Talk</h2>
+                    </a>
                 </div>
             </div>
         </div>
@@ -99,7 +83,6 @@
 import { onMounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Prism from "~/components/ui/Prism.vue";
 
 // Register GSAP Plugin
 if (process.client) {

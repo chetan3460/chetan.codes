@@ -6,7 +6,7 @@
   --font-body: 'Outfit', sans-serif;
   --font-outfit: 'Outfit', sans-serif;
   --font-cormorant: 'Cormorant Garamond', serif;
-
+  --font-OutfitPortfolio: 'OutfitPortfolio', sans-serif;
   /* Color */
   --preloader-bg: #fff;
   --preloader-text: #000;
@@ -248,12 +248,13 @@ body .site-main:before {
 /* Header */
 @layer base {
   .custom-container {
-    padding: 0 2rem;
-    margin: 0 auto;
-    width: 100%;
+    @apply w-full mx-auto px-3 md:px-6;
   }
   .container-fluid {
     @apply w-full p-4 md:px-8;
+  }
+  .custom-gird {
+    @apply grid gap-3.5 md:gap-9 grid-cols-12;
   }
 }
 @layer components {

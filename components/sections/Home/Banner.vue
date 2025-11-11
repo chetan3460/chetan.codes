@@ -1,23 +1,21 @@
 <template>
-    <section class="hero-header relative  ">
+    <section class="h-svh w-screen  relative  ">
         <!-- Threads Background -->
-        <Threads class="hero-header__canvas" :color="[1, 1, 1]" :amplitude="2" :distance="0.4"
-            :enableMouseInteraction="true" />
+        <Threads :color="[1, 1, 1]" :amplitude="2" :distance="0.2" :enableMouseInteraction="true" />
 
         <!-- Text Pressure -->
         <div
             class="absolute bottom-0 left-0 right-0 w-full h-full flex items-center justify-center pointer-events-none">
             <TextPressure text="CREATIVE DEVELOPER" :flex="true" :alpha="false" :stroke="false" :width="false"
-                :weight="true" :italic="true" text-color="#ffffff" stroke-color="#27FF64" :min-font-size="100" />
+                :weight="true" :italic="true" text-color="#ffffff" stroke-color="#27FF64" :min-font-size="40" />
         </div>
-        <div class="hero-header__wrapper custom-container grid grid-cols-12 gap-[3.125rem] ">
-
-            <div class="hero-header__bottom">
-                <h1 class="hero-header__description text-white" data-splitting>
-                    Hey there, I'm Chetan Dhargalkar, Creative Developer <br />
-                    based in Goa - India, dedicated to crafting <br />unforgettable experiences.
-                </h1>
-
+        <div class="hero-header__wrapper items-end size-full relative custom-container custom-gird ">
+            <div class="hero-header__bottom col-start-1 col-span-12">
+                <h2 class="hero-header__description font-normal text-center !font-OutfitPortfolio text-[20px] md:text-4xl leading-tight md:leading-relaxed text-white"
+                    data-splitting>
+                    Turning pixels into experiences. Code into emotion. <br />
+                    Ideas into reality. Creative Developer specializing <br />in immersive web storytelling.
+                </h2>
             </div>
         </div>
     </section>
@@ -27,7 +25,6 @@
 import Threads from '~/components/ui/Threads.vue'
 import TextPressure from '~/components/ui/TextPressure.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
-import ParticleImage from '@/components/ParticleImage.vue'
 import { useHeroAnimations } from "@/composables/useHeroBanner";
 
 useHeroAnimations();
@@ -49,168 +46,3 @@ onUnmounted(() => {
     window.removeEventListener('resize', handleResize)
 })
 </script>
-
-<style>
-.hero-header__canvas {
-    background-color: transparent;
-    height: 100%;
-    left: -2px;
-    outline: none;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 0;
-}
-
-.hero-header {
-    height: 100vh;
-    height: 100svh;
-    position: relative;
-    width: 100vw;
-}
-
-.hero-header__wrapper {
-    align-items: flex-end;
-    height: 100%;
-    padding-bottom: 2.5rem;
-    position: relative;
-    width: 100%;
-}
-
-.hero-header__slogan {
-    left: 50%;
-    mix-blend-mode: color-dodge;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    white-space: nowrap;
-    width: 100%;
-    z-index: 1;
-}
-
-.hero-header__slogan.is--paused span {
-    animation-play-state: paused;
-}
-
-.hero-header__slogan span {
-    animation: a 50s linear infinite;
-    color: var(--canvas-text);
-    display: inline-block;
-    font-size: 18vw;
-    font-weight: 900;
-    letter-spacing: 5vw;
-    line-height: 1;
-    opacity: 0.15;
-    text-transform: uppercase;
-}
-
-@keyframes a {
-    0% {
-        transform: translate(0);
-    }
-
-    to {
-        transform: translate(-100%);
-    }
-}
-
-.hero-header__bottom {
-    grid-column: 1 / span 12;
-    position: relative;
-    z-index: 3;
-}
-
-.hero-header__description {
-    font-family: OutfitPortfolio, sans-serif;
-    font-weight: 400;
-    line-height: 1.4;
-    text-align: center;
-    font-size: 2.25rem;
-}
-
-.hero-header__scroll {
-    bottom: 0;
-    cursor: pointer;
-    height: 3rem;
-    position: absolute;
-    right: -0.625rem;
-    width: 3rem;
-    z-index: 10;
-}
-
-.hero-header__scroll .svg-data {
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
-.hero-header__scroll .svg-data svg {
-    animation: b 1.4s infinite var(--ease-out-cubic);
-}
-
-@keyframes b {
-    0% {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-
-    50% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateY(100%);
-    }
-}
-
-.hero-header__scroll .svg-data svg path {
-    fill: var(--col-text);
-}
-
-@media (max-width: 1024px) {
-    .hero-header__wrapper {
-        padding-bottom: 1.5625rem;
-    }
-
-    .hero-header__description {
-        font-size: 1.5rem;
-    }
-
-    .hero-header__slogan span {
-        animation-duration: 30s;
-        font-size: 35vw;
-    }
-}
-
-@media (max-width: 767px) {
-    .hero-header {
-        min-height: 18.75rem;
-    }
-
-    .hero-header__wrapper {
-        padding-bottom: 0.9375rem;
-    }
-
-    .hero-header__description {
-        font-size: 1.125rem;
-    }
-
-    .hero-header__description br {
-        display: none;
-    }
-
-    .hero-header__scroll {
-        bottom: auto;
-        left: 50%;
-        margin-left: -1.5rem;
-        right: auto;
-        top: -4.375rem;
-    }
-}
-</style>

@@ -1,5 +1,6 @@
 <template>
-  <div ref="containerRef" class="w-full h-full relative hero-header__canvas" />
+  <div ref="containerRef"
+    class="w-full h-full   hero-header__canvas bg-transparent  outline-0 absolute top-0  -left-0.5  z-0" />
 </template>
 
 <script setup lang="ts">

@@ -2,13 +2,10 @@
     <section class="about content-section">
         <div class="custom-container  grid grid-cols-12 gap-4">
             <div class="grid__col--full">
-                <div class="about__media">
-                    <ParticleImage :image-src="imageSrc" canvas-width="200" canvas-height="200" mouse-force="50"
-                        gravity="0.08" :noise="2" />
-                </div>
+
                 <div class="content-section__head">
                     <h2 class="about__title content-section__title scroll-js-title" data-splitting
-                        data-fx="perspective-opacity">Behind the Scenes</h2>
+                        data-fx="typewriter-scramble">Behind the Scenes</h2>
                     <span class="about__decorative content-section__decorative scroll-js-title" data-splitting
                         data-fx="scale-words">About</span>
                 </div>

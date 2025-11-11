@@ -9,7 +9,7 @@
             <TextPressure text="CREATIVE DEVELOPER" :flex="true" :alpha="false" :stroke="false" :width="false"
                 :weight="true" :italic="true" text-color="#ffffff" stroke-color="#27FF64" :min-font-size="40" />
         </div>
-        <div class="hero-header__wrapper items-end size-full relative custom-container custom-gird ">
+        <div class="hero-header__wrapper items-end size-full relative custom-container custom-gird pb-12">
             <div class="hero-header__bottom col-start-1 col-span-12">
                 <h2 class="hero-header__description font-normal text-center !font-OutfitPortfolio text-[20px] md:text-4xl leading-tight md:leading-relaxed text-white"
                     data-splitting>

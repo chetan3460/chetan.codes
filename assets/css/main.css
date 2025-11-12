@@ -342,3 +342,27 @@ section {
     font-size: 5rem;
   }
 }
+
+/* Header Color Adaptation */
+header.header--light {
+  --col-text: #ecf5ff;
+  --col-text-500: hsla(0, 0%, 100%, 0.7);
+  --col-pinwheel: #fff;
+  --col-accent: #1fa5fd;
+}
+
+header.header--dark {
+  --col-text: #1a1a2e;
+  --col-text-500: hsla(0, 0%, 0%, 0.6);
+  --col-pinwheel: #1a1a2e;
+  --col-accent: #1a1a2e;
+}
+
+header .header__name,
+header .header__role {
+  transition: color 0.3s ease;
+}
+
+header path[logo-fill] {
+  transition: fill 0.3s ease;
+}

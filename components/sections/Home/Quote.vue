@@ -1,5 +1,5 @@
 <template>
-    <section class="quote-section content-section">
+    <section class="quote-section content-section" style="background-color: #ffc29b" data-liquid-bg-section>
         <div class="content">
             <h2 class="content__title content__title--effect27 scroll-js-title !font-outfit" data-splitting
                 data-fx="data-effect27">

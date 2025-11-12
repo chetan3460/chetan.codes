@@ -1,5 +1,5 @@
 <template>
-    <section class="h-svh w-screen relative">
+<section class="h-svh w-screen relative" data-liquid-bg-section data-bg-color="#000000">
         <!-- Threads Background -->
         <!-- <Threads :color="threadColor" :amplitude="threadParams.amplitude" :distance="threadParams.distance"
             :enableMouseInteraction="true" /> -->

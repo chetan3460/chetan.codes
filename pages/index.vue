@@ -1,9 +1,8 @@
 <template>
-    <!-- <SectionsHomeTest /> -->
-
     <SectionsHomeBanner />
+    <SectionsHomeTest />
     <SectionsHomeAbout />
-    <SectionsHomeQuote />
+    <!-- <SectionsHomeQuote /> -->
     <!-- <SectionsHomeWorks /> -->
     <SectionsHomeSkills />
     <SectionsHomeProcess />

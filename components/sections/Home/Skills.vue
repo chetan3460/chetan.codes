@@ -1,5 +1,5 @@
 <template>
-  <section class="content-section">
+<section class="content-section" data-liquid-bg-section data-bg-color="#2d2d2d">
     <div class="custom-container grid grid-cols-12 gap-4">
       <div class="grid__col--full">
 

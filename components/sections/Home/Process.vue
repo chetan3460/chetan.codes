@@ -2,9 +2,7 @@
   <section class="lab content-section">
     <div class="custom-container grid">
       <div class="grid__col--full">
-        <div class="about__media">
-          <img :src="imageSrc" class="media__image" alt="Creative Developer">
-        </div>
+
         <!-- Title -->
         <div class="content-section__head">
           <h2 class="lab__title content-section__title scroll-js-title" data-splitting data-fx="perspective-opacity">

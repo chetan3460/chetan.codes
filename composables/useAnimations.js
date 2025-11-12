@@ -85,6 +85,9 @@ export function useAnimations() {
             case "liquid-morph":
                 effectTitleLiquidMorph(element);
                 break;
+            case "data-effect27":
+                effectTitleDataEffect27(element);
+                break;
         }
     }
 
@@ -463,6 +466,44 @@ export function useAnimations() {
                 },
             }
         );
+        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
+    }
+
+    // Data Effect 27: Words flying in from random positions with 3D perspective
+    function effectTitleDataEffect27(element) {
+        const words = [...element.querySelectorAll('.word')];
+        if (!words.length) return;
+        
+        words.forEach(word => gsap.set(word.parentNode, { perspective: 1000 }));
+
+        const tween = gsap.fromTo(words, {
+            'will-change': 'opacity, transform', 
+            z: () => gsap.utils.random(500, 950),
+            opacity: 0,
+            xPercent: () => gsap.utils.random(-100, 100),
+            yPercent: () => gsap.utils.random(-10, 10),
+            rotationX: () => gsap.utils.random(-90, 90)
+        }, 
+        {
+            ease: 'expo',
+            opacity: 1,
+            rotationX: 0,
+            rotationY: 0,
+            xPercent: 0,
+            yPercent: 0,
+            z: 0,
+            scrollTrigger: {
+                trigger: element,
+                start: 'center center',
+                end: '+=300%',
+                scrub: true,
+                pin: element.parentNode,
+            },
+            stagger: {
+                each: 0.006,
+                from: 'random'
+            }
+        });
         if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 

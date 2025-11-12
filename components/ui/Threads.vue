@@ -1,6 +1,7 @@
 <template>
   <div ref="containerRef"
-    class="w-full h-full   hero-header__canvas bg-transparent  outline-0 absolute top-0  -left-0.5  z-0" />
+    class="w-full h-full hero-header__canvas bg-transparent outline-0 absolute top-0 -left-0.5 z-0 transition-transform duration-1000 ease-out"
+    :style="{ transform: `rotate(${rotation}deg)` }" />
 </template>
 
 <script setup lang="ts">
@@ -13,13 +14,15 @@ interface Props {
   amplitude?: number;
   distance?: number;
   enableMouseInteraction?: boolean;
+  rotation?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   color: () => [1, 1, 1] as [number, number, number],
   amplitude: 1,
   distance: 0,
-  enableMouseInteraction: false
+  enableMouseInteraction: false,
+  rotation: 0
 });
 
 const containerRef = useTemplateRef<HTMLDivElement>('containerRef');
@@ -277,10 +280,31 @@ onUnmounted(() => {
   cleanup();
 });
 
+// Update uniforms instead of reinitializing scene to prevent flickering
 watch(
-  [() => props.color, () => props.amplitude, () => props.distance, () => props.enableMouseInteraction],
-  () => {
-    initializeScene();
+  () => props.amplitude,
+  (newVal) => {
+    if (program) {
+      program.uniforms.uAmplitude.value = newVal;
+    }
+  }
+);
+
+watch(
+  () => props.distance,
+  (newVal) => {
+    if (program) {
+      program.uniforms.uDistance.value = newVal;
+    }
+  }
+);
+
+watch(
+  () => props.color,
+  (newVal) => {
+    if (program && gl) {
+      program.uniforms.uColor.value = new Color(...newVal);
+    }
   },
   { deep: true }
 );

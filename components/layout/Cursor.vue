@@ -16,16 +16,47 @@ let cursorArea, cursorSmall, cursorLarge, cursorText;
 let smallPos = { x: window.innerWidth / 2, y: window.innerHeight + 50 };
 let largePos = { x: window.innerWidth / 2, y: window.innerHeight + 50 };
 let mousePos = { x: window.innerWidth / 2, y: window.innerHeight + 50 };
+let prevMousePos = { x: window.innerWidth / 2, y: window.innerHeight + 50 };
+let rotation = 0;
+let targetRotation = 0;
 
 function updateCursor() {
   if (!cursorSmall || !cursorLarge) return;
+  
+  // Calculate velocity for rotation
+  const deltaX = mousePos.x - prevMousePos.x;
+  const deltaY = mousePos.y - prevMousePos.y;
+  const velocity = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+  
+  // Calculate angle based on movement direction
+  if (velocity > 0.5) {
+    targetRotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+  }
+  
+  // Smooth rotation interpolation
+  rotation = La(rotation, targetRotation, 0.1);
+  
+  // Update positions
   smallPos.x = La(smallPos.x, mousePos.x, 0.2);
   smallPos.y = La(smallPos.y, mousePos.y, 0.2);
   largePos.x = La(largePos.x, mousePos.x, 0.1);
   largePos.y = La(largePos.y, mousePos.y, 0.1);
 
-  gsap.set(cursorSmall, { x: smallPos.x, y: smallPos.y });
-  gsap.set(cursorLarge, { x: largePos.x, y: largePos.y });
+  // Apply transforms with rotation
+  gsap.set(cursorSmall, { 
+    x: smallPos.x, 
+    y: smallPos.y,
+    rotation: rotation
+  });
+  gsap.set(cursorLarge, { 
+    x: largePos.x, 
+    y: largePos.y,
+    rotation: rotation * 0.5  // Half rotation for subtle effect
+  });
+  
+  // Store previous position
+  prevMousePos.x = mousePos.x;
+  prevMousePos.y = mousePos.y;
 }
 
 function handleMouseMove(event) {
@@ -142,13 +173,15 @@ onUnmounted(() => {
 .cursor__circle--small {
   background-color: var(--cursor-small);
   height: 10px;
-  width: 10px
+  width: 10px;
+  transition: transform 0.1s ease-out
 }
 
 .cursor__circle--large {
   border: 1px solid var(--cursor-large);
   height: 40px;
-  width: 40px
+  width: 40px;
+  transition: transform 0.1s ease-out
 }
 
 .cursor__text {

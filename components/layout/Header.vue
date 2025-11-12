@@ -3,7 +3,7 @@
         <div class="container-fluid header__wrapper w-full   backdrop-blur-[10px]   py-5 grid grid-cols-12 gap-4">
             <!-- Logo -->
             <div
-                class="header__block header__block--left flex items-center col-span-8 lg:col-span-4 col-start-1  justify-start">
+                class="header__block header__block--left flex items-center col-span-8 lg:col-span-4 col-start-1 lg:col-start-5 justify-center">
                 <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1] w-[1.25rem] h-[2.5rem] overflow-hidden">
                         <span
@@ -50,14 +50,14 @@
             </div>
 
             <!--Name  -->
-            <div
+            <!-- <div
                 class="header__block header__block--center hidden lg:block col-span-8 lg:col-span-4 col-start-5 flex justify-center items-center">
                 <div class="header__version">
                     <span class="">
                         Portfolio <b class="text-[var(--col-accent)]">'25</b>
                     </span>
                 </div>
-            </div>
+            </div> -->
             <!-- Icon -->
             <div
                 class="hidden header__block header__block--right items-center  col-span-4 col-start-9 flex justify-end ">

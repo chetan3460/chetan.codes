@@ -3,6 +3,7 @@
 
     <SectionsHomeBanner />
     <SectionsHomeAbout />
+    <SectionsHomeQuote />
     <!-- <SectionsHomeWorks /> -->
     <SectionsHomeSkills />
     <SectionsHomeProcess />

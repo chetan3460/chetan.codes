@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex items-center justify-center" data-liquid-bg-section data-bg-color="#eef7e7">
+<section class="min-h-screen flex items-center justify-center" data-liquid-bg-section data-bg-color="#dbeafe">
     <div class="max-w-4xl mx-auto px-8 text-center">
       <h2 class="text-5xl font-bold mb-6 text-gray-900">Light Background Test (Hub Theme Color)</h2>
       <p class="text-xl text-gray-700 mb-4">

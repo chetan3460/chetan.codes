@@ -62,9 +62,11 @@
   }
 }
 /* Apply default fonts */
+@import './adaptive-logo.css';
+
 body {
   font-family: var(--font-body);
-  color: var(--col-text);
+  color: #000;
 }
 
 h1,

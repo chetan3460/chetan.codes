@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { useLiquidBg } from '~/composables/useLiquidBg'
+import { useLiquidBgColor } from '~/composables/useLiquidBgColor'
 
-const { init, cleanup } = useLiquidBg()
+const { init, cleanup } = useLiquidBgColor()
 </script>
 
 <style scoped>

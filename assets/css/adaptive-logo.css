@@ -1,0 +1,62 @@
+/* Hub HTML style adaptive logo colors */
+
+/* Logo visibility based on header state */
+.navbar-brand .logo-dark {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.navbar-brand .logo-default {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+
+/* When header has light background (show dark logo) */
+[data-lqd-interactive-color].lqd-active-row-light .navbar-brand .logo-dark,
+.lqd-active-row-light .navbar-brand .logo-dark {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+
+[data-lqd-interactive-color].lqd-active-row-light .navbar-brand .logo-dark~img,
+.lqd-active-row-light .navbar-brand .logo-dark~img {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+/* When header has dark background (show light logo) */
+[data-lqd-interactive-color].lqd-active-row-dark .navbar-brand .logo-default {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+/* For navbar-brand-solid container */
+.navbar-brand-solid .logo-dark {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Header interactive color targeting */
+.main-header.lqd-active-row-light {
+  /* Light header styles if needed */
+}
+
+.main-header.lqd-active-row-dark {
+  /* Dark header styles if needed */
+}
+
+/* Optional: Adjust the logo container */
+.navbar-brand-inner {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Logo transition for smooth changes */
+.navbar-brand img {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}

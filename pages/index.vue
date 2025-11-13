@@ -1,6 +1,5 @@
 <template>
     <SectionsHomeBanner />
-    <SectionsHomeTest />
     <SectionsHomeAbout />
     <!-- <SectionsHomeQuote /> -->
     <!-- <SectionsHomeWorks /> -->

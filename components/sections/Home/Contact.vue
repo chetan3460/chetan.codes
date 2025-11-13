@@ -1,5 +1,5 @@
 <template>
-<section class="contact content-section s is--footer" data-liquid-bg-section data-bg-color="#262626">
+<section class="contact content-section s is--footer" data-liquid-bg-section data-bg-color="#dbeafe">
         <div class="custom-container grid">
             <div class="grid__col--full">
                 <div class="relative">

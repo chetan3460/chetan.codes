@@ -56,7 +56,7 @@
 
 body {
   font-family: var(--font-body);
-  color: #000;
+  color: #fff;
 }
 
 h1,
@@ -110,6 +110,7 @@ html.lenis body {
 body {
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  color: #fff;
 }
 
 canvas,
@@ -201,6 +202,16 @@ h6 {
   --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
   --ease-out-back: cubic-bezier(0.25, 2, 0.5, 0.9);
   --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --gradient-color-1: #050316; /* darker */
+  --gradient-color-2: #07041c;
+  --gradient-color-3: #0a0521; /* your color */
+  --gradient-color-4: #0c0727;
+  --gradient-color-5: #0f0a2e;
+  --gradient-color-6: #130d34;
+  --gradient-color-7: #160f39; /* your color */
+  --gradient-color-8: #1a1342;
+  --gradient-color-9: #1f184c;
+  --gradient-color-10: #251e57; /* brighter end */
 }
 
 body,

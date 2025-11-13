@@ -1,7 +1,8 @@
 <template>
     <BackgroundProvider>
+        <LayoutHeader />
+
         <main class="site-main" id="lqd-site-content">
-            <LayoutHeader />
             <slot />
             <LayoutFooter />
             <!-- <ClientOnly>

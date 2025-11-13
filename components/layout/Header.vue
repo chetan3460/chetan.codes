@@ -7,7 +7,7 @@
                 class="header__block header__block--left flex items-center col-span-8 lg:col-span-4 col-start-1 lg:col-start-5 justify-center">
                 <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1]  overflow-hidden rounded-full">
-                        <span class="header__pinwheel-svg svg-data  size-10 p-1.5 rotate-[-24deg] inline-flex">
+                        <span class="header__pinwheel-svg svg-data  size-16 p-1.5 rotate-[-24deg] inline-flex">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 45 45" fill="none"
                                 class="svg-7 flower-svg"
@@ -42,7 +42,7 @@
                         </span>
 
                     </div>
-                    <div class="header__author relative z-[2] px-[0.3125rem] text-xs ">
+                    <div class="header__author relative z-[2] px-[0.3125rem] text-base ">
                         <span class="header__name text-[var(--col-text)] font-semibold uppercase block">Chetan
                             Dhargalkar</span>
                         <span class="header__role text-[var(--col-text-500)] font-medium uppercase block">Creative

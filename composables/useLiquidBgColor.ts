@@ -7,42 +7,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const useLiquidBgColor = () => {
   let scrollTriggers: any[] = []
-  let bgElement: HTMLElement | null = null
-
-  const createBgElement = () => {
-    if (bgElement) return bgElement
-
-    bgElement = document.createElement('div')
-    bgElement.className = 'lqd-liquid-bg-el-wrap lqd-overlay pointer-events-none z-index--1'
-    bgElement.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      pointer-events: none;
-      z-index: -1;
-    `
-
-    const innerBg = document.createElement('div')
-    innerBg.className = 'lqd-liquid-bg-el'
-    innerBg.style.cssText = `
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100vh;
-      pointer-events: none;
-    `
-
-    bgElement.appendChild(innerBg)
-    document.body.appendChild(bgElement)
-
-    return bgElement
-  }
 
   const init = async () => {
     // Wait for DOM to be ready
-    await new Promise(r => setTimeout(r, 1000))
+    await new Promise(r => setTimeout(r, 100))
 
     const mainContent = document.querySelector('main') as HTMLElement
     if (!mainContent) {
@@ -56,78 +24,71 @@ export const useLiquidBgColor = () => {
       return
     }
 
-    // Create background element
-    createBgElement()
-    const bgInner = bgElement?.querySelector('.lqd-liquid-bg-el') as HTMLElement
-
-    if (!bgInner) {
-      console.error('Background element not created')
-      return
-    }
-
-    // Set main content and sections to transparent so liquid bg shows through
-    mainContent.style.backgroundColor = 'transparent'
-    sections.forEach(section => {
-      section.style.backgroundColor = 'transparent'
-    })
-
     // Get colors from each section (from data-bg-color attribute)
     const colors: any[] = []
     sections.forEach((section, idx) => {
       const bgColor = section.getAttribute('data-bg-color') || '#ffffff'
-      console.log(`Section ${idx} bg color:`, bgColor)
+      const sectionClass = section.className
+      console.log(`Section ${idx}: class="${sectionClass}" bg-color="${bgColor}"`)
       colors.push(bgColor)
     })
 
-    // Set initial background
+    // Set initial background color on main tag immediately
     if (colors.length > 0) {
-      bgInner.style.backgroundColor = colors[0]
-      applyColorToHeader(colors[0])
+      const initialColor = colors[0]
+      // Force clear any existing styles
+      mainContent.style.removeProperty('background-color')
+      // Set new color with important flag
+      mainContent.style.setProperty('background-color', initialColor, 'important')
+      console.log('🎨 Initial background set to main:', initialColor, '(from first section)')
+      console.log('🎨 Main tag current bg after setting:', window.getComputedStyle(mainContent).backgroundColor)
+      applyColorToHeader(initialColor)
+      
+      // Check again after a tiny delay
+      setTimeout(() => {
+        console.log('🎨 Main tag bg after 10ms:', window.getComputedStyle(mainContent).backgroundColor)
+        console.log('🎨 Main tag inline style:', mainContent.style.backgroundColor)
+      }, 10)
     }
 
-    // Setup GSAP animations for each section
-    sections.forEach((section, idx) => {
-      const fromColor = idx === 0 ? colors[0] : colors[idx - 1]
-      const toColor = colors[idx]
-
-      const timeline = gsap.timeline()
-
-      // Animate background color
-      timeline.fromTo(
-        bgInner,
-        { backgroundColor: fromColor },
-        { backgroundColor: toColor },
-        0
-      )
+    // Setup GSAP animations for each section transition
+    for (let idx = 0; idx < sections.length - 1; idx++) {
+      const section = sections[idx]
+      const fromColor = colors[idx]
+      const toColor = colors[idx + 1]
+      
+      // Use a .to tween so nothing is applied on creation
+      const tween = gsap.to(mainContent, {
+        backgroundColor: toColor,
+        duration: 1,
+        immediateRender: false,
+      })
 
       // Create ScrollTrigger
       const trigger = ScrollTrigger.create({
         trigger: section,
-        animation: timeline,
-        start: idx === 0 ? 'top top' : 'top top',
-        end: idx === 0 ? `+=${window.innerHeight}` : `+=${section.offsetHeight}`,
+        animation: tween,
+        start: 'top top',
+        end: `+=${section.offsetHeight}`,
         scrub: 0.1,
-        onUpdate: (self) => {
-          // Get current interpolated color
-          const progress = self.progress
-          const from = tinycolor(fromColor)
-          const to = tinycolor(toColor)
-          const interpolated = tinycolor.mix(from, to, progress * 100)
-          const currentColor = interpolated.toRgbString()
-          
-          // Update header color based on current background
+        onUpdate: () => {
+          // Read the actual current background color from the element
+          const currentColor = (gsap.getProperty(mainContent, 'backgroundColor') as string) || toColor
           applyColorToHeader(currentColor)
-          console.log(`Section ${idx} progress:`, self.progress.toFixed(2))
         }
       })
 
       scrollTriggers.push(trigger)
-    })
+    }
 
-    ScrollTrigger.refresh()
-    console.log('✅ Liquid bg color initialized with', sections.length, 'sections')
+    // Delay refresh to ensure initial color stays set
+    setTimeout(() => {
+      ScrollTrigger.refresh()
+      console.log('✅ Liquid bg color initialized with', sections.length, 'sections')
+    }, 200)
   }
 
+  
   const applyColorToHeader = (bgColor: string) => {
     const header = document.querySelector('[data-liquid-bg="true"]') as HTMLElement
     if (!header) return
@@ -190,10 +151,6 @@ export const useLiquidBgColor = () => {
   const cleanup = () => {
     scrollTriggers.forEach(trigger => trigger.kill())
     scrollTriggers = []
-    if (bgElement && bgElement.parentNode) {
-      bgElement.parentNode.removeChild(bgElement)
-      bgElement = null
-    }
   }
 
   onMounted(() => {

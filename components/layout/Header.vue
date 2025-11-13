@@ -1,5 +1,5 @@
 <template>
-    <header class="header left-0 fixed top-0 w-full z-10" data-liquid-bg="true" data-liquid-bg-options='{"setBgTo": ".header__pinwheel-svg svg, .header__author", "manipulateColor": [{"darken": 30}, {"brighten": 15}, {"saturate": 20}]}'  >
+    <header class="header left-0 fixed top-0 w-full z-10" data-liquid-bg="true" data-liquid-bg-options='{"setBgTo": ".header__pinwheel, .header__pinwheel-svg svg, .header__author", "manipulateColor": [{"darken": 30}, {"brighten": 15}, {"saturate": 20}]}'  >
         <div class="container-fluid header__wrapper w-full   backdrop-blur-[10px]   py-5 grid grid-cols-12 gap-4">
             <!-- Logo -->
             <div

@@ -165,6 +165,13 @@ export const useLiquidBgColor = () => {
             path.style.fill = finalColor
           })
         }
+        // For div elements (like header__pinwheel)
+        else if (el.tagName && el.tagName.toLowerCase() === 'div') {
+          // Apply color with box-shadow for visual effect
+          ;(el as HTMLElement).style.color = finalColor
+          ;(el as HTMLElement).style.borderColor = finalColor
+          ;(el as HTMLElement).style.boxShadow = `0 0 20px ${finalColor}40, inset 0 0 10px ${finalColor}20`
+        }
         // For text elements
         else {
           ;(el as HTMLElement).style.color = finalColor

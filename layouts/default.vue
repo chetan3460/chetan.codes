@@ -16,6 +16,5 @@
 
 <script setup>
 import SleekLineCursor from '~/components/layout/SleekLineCursor.vue';
-import SmoothCursor from '~/components/layout/SmoothCursor.vue';
 import BackgroundProvider from '~/components/BackgroundProvider.vue';
 </script>

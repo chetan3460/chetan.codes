@@ -34,7 +34,6 @@ import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { useHeroAnimations } from "@/composables/useHeroBanner";
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import ColorBends from '@/components/ui/ColorBends.vue'
 
 useHeroAnimations();
 

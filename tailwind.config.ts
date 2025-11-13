@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
-import { setupInspiraUI } from '@inspira-ui/plugins'
 
 const config: Config = {
   darkMode: 'selector',
@@ -55,7 +54,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [animate, setupInspiraUI],
+  plugins: [animate],
 }
 
 export default config

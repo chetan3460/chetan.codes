@@ -158,26 +158,29 @@ export const useLiquidBgColor = () => {
 
         const finalColor = color.toRgbString()
         
-        // For SVG elements
+        // For SVG elements - use dark contrasting color
         if (el.tagName && el.tagName.toLowerCase() === 'svg') {
+          // Create dark contrasting color for visibility against pinwheel background
+          const svgColor = tinycolor(finalColor).darken(30).toRgbString()
           const paths = el.querySelectorAll('path')
           paths.forEach((path: any) => {
-            path.style.fill = finalColor
+            path.style.fill = svgColor
           })
+          console.log('🎨 Applied SVG color:', svgColor)
         }
         // For div elements (like header__pinwheel)
         else if (el.tagName && el.tagName.toLowerCase() === 'div') {
-          // Apply color with box-shadow for visual effect
+          // Apply color same as calculated - fill with final color
           ;(el as HTMLElement).style.color = finalColor
+          ;(el as HTMLElement).style.backgroundColor = finalColor
           ;(el as HTMLElement).style.borderColor = finalColor
           ;(el as HTMLElement).style.boxShadow = `0 0 20px ${finalColor}40, inset 0 0 10px ${finalColor}20`
+          console.log('🎨 Applied pinwheel color:', finalColor)
         }
         // For text elements
         else {
           ;(el as HTMLElement).style.color = finalColor
         }
-
-        console.log('🎨 Applied color to header:', finalColor)
       })
     } catch (e) {
       console.error('Error parsing header options:', e)

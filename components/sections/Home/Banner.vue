@@ -10,16 +10,18 @@
 
         <!-- Text Pressure -->
         <div
-            class="absolute bottom-0 left-0 right-0 w-full h-full flex items-center justify-center pointer-events-none z-10">
+            class="absolute bottom-0 left-0 right-0 w-full h-full flex flex-col items-center justify-center pointer-events-none z-10">
+
             <TextPressure text="CREATIVE DEVELOPER" :flex="true" :alpha="false" :stroke="false" :width="false"
-                :weight="true" :italic="true" text-color="#ffffff" stroke-color="#27FF64" :min-font-size="40" />
+                :weight="true" :italic="true" text-color="#e6e6e1" stroke-color="#27FF64" :min-font-size="40" />
+
         </div>
         <div class="hero-header__wrapper items-end size-full relative custom-container custom-gird pb-12 z-10">
             <div class="hero-header__bottom col-start-1 col-span-12">
-                <h2 class="hero-header__description font-normal text-center !font-OutfitPortfolio  text-base md:text-2xl lg:text-4xl leading-5 md:leading-relaxed text-white"
+                <h2 class="hero-header__description font-normal text-center !font-OutfitPortfolio  text-base md:text-2xl lg:text-3xl leading-5 md:leading-relaxed text-[#e6e6e1]"
                     data-splitting>
                     Turning pixels into experiences. Code into emotion. <br />
-                    Ideas into reality. Creative Developer specializing <br />in immersive web storytelling.
+                    Specializing in WordPress, Nuxt.js, Tailwind, Vite <br>& high-performance front-end engineering.
                 </h2>
             </div>
         </div>
@@ -42,7 +44,7 @@ const waveParams = reactive({
     amplitude: 300,
     speed: 0.003,
     lines: 15,
-    color: { r: 255, g: 29, b: 72 },
+    color: { r: 10, g: 5, b: 33 },
     theme: 'theme-dark'
 })
 

@@ -11,7 +11,6 @@ export function useHeaderAnimation() {
 
     const { $lenis } = useNuxtApp();
     if (!$lenis) {
-      console.error("❌ Lenis not found in Nuxt app!");
       return;
     }
 

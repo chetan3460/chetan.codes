@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-cormorant);
+  font-family: var(--font-outfit);
 }
 
 html.lenis,
@@ -277,7 +277,7 @@ section {
   @apply relative mb-19  md:mb-25 lg:mb-75;
 }
 .content-section__title {
-  @apply font-cormorant text-5xl  md:text-7xl lg:text-[15rem] font-medium leading-[1] text-center;
+  @apply font-outfit text-5xl  md:text-xl lg:text-[13rem] font-medium leading-[1] text-center;
 }
 .content-section__decorative {
   @apply text-[var(--col-text-deco)]
@@ -365,4 +365,20 @@ header .header__role {
 
 header path[logo-fill] {
   transition: fill 0.3s ease;
+}
+@theme inline {
+  --animate-meteor-effect: meteor 5s linear infinite;
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
 }

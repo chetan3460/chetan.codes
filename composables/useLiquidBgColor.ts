@@ -14,22 +14,18 @@ export const useLiquidBgColor = () => {
 
     const mainContent = document.querySelector('main') as HTMLElement
     if (!mainContent) {
-      console.error('Main content not found')
       return
     }
 
     const sections = Array.from(document.querySelectorAll('[data-liquid-bg-section]')) as HTMLElement[]
     if (sections.length === 0) {
-      console.error('No sections with data-liquid-bg-section found')
       return
     }
 
     // Get colors from each section (from data-bg-color attribute)
     const colors: any[] = []
-    sections.forEach((section, idx) => {
+    sections.forEach((section) => {
       const bgColor = section.getAttribute('data-bg-color') || '#ffffff'
-      const sectionClass = section.className
-      console.log(`Section ${idx}: class="${sectionClass}" bg-color="${bgColor}"`)
       colors.push(bgColor)
     })
 
@@ -40,15 +36,7 @@ export const useLiquidBgColor = () => {
       mainContent.style.removeProperty('background-color')
       // Set new color with important flag
       mainContent.style.setProperty('background-color', initialColor, 'important')
-      console.log('🎨 Initial background set to main:', initialColor, '(from first section)')
-      console.log('🎨 Main tag current bg after setting:', window.getComputedStyle(mainContent).backgroundColor)
       applyColorToHeader(initialColor)
-      
-      // Check again after a tiny delay
-      setTimeout(() => {
-        console.log('🎨 Main tag bg after 10ms:', window.getComputedStyle(mainContent).backgroundColor)
-        console.log('🎨 Main tag inline style:', mainContent.style.backgroundColor)
-      }, 10)
     }
 
     // Setup GSAP animations for each section transition
@@ -84,7 +72,6 @@ export const useLiquidBgColor = () => {
     // Delay refresh to ensure initial color stays set
     setTimeout(() => {
       ScrollTrigger.refresh()
-      console.log('✅ Liquid bg color initialized with', sections.length, 'sections')
     }, 200)
   }
 
@@ -117,34 +104,42 @@ export const useLiquidBgColor = () => {
           })
         }
 
-        const finalColor = color.toRgbString()
+        // Ensure the pinwheel background stays light
+        const ensureLightColor = (c: string) => {
+          let tc = tinycolor(c)
+          if (!tc.isLight()) {
+            tc = tc.lighten(40)
+            if (!tc.isLight()) {
+              tc = tinycolor('#f3f4f6') // fallback to a known light gray
+            }
+          }
+          return tc.toRgbString()
+        }
+
+        const lightBg = ensureLightColor(color.toRgbString())
         
-        // For SVG elements - use dark contrasting color
+        // For SVG elements - use dark contrasting color relative to light background
         if (el.tagName && el.tagName.toLowerCase() === 'svg') {
-          // Create dark contrasting color for visibility against pinwheel background
-          const svgColor = tinycolor(finalColor).darken(30).toRgbString()
+          const svgColor = tinycolor(lightBg).darken(40).desaturate(20).toRgbString()
           const paths = el.querySelectorAll('path')
           paths.forEach((path: any) => {
             path.style.fill = svgColor
           })
-          console.log('🎨 Applied SVG color:', svgColor)
         }
         // For div elements (like header__pinwheel)
         else if (el.tagName && el.tagName.toLowerCase() === 'div') {
-          // Apply color same as calculated - fill with final color
-          ;(el as HTMLElement).style.color = finalColor
-          ;(el as HTMLElement).style.backgroundColor = finalColor
-          ;(el as HTMLElement).style.borderColor = finalColor
-          ;(el as HTMLElement).style.boxShadow = `0 0 20px ${finalColor}40, inset 0 0 10px ${finalColor}20`
-          console.log('🎨 Applied pinwheel color:', finalColor)
+          ;(el as HTMLElement).style.color = lightBg
+          ;(el as HTMLElement).style.backgroundColor = lightBg
+          ;(el as HTMLElement).style.borderColor = lightBg
+          ;(el as HTMLElement).style.boxShadow = `0 0 20px ${lightBg}40, inset 0 0 10px ${lightBg}20`
         }
         // For text elements
         else {
-          ;(el as HTMLElement).style.color = finalColor
+          ;(el as HTMLElement).style.color = lightBg
         }
       })
     } catch (e) {
-      console.error('Error parsing header options:', e)
+      // Error parsing header options - silent fail
     }
   }
 

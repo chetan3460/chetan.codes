@@ -1,12 +1,12 @@
 <template>
-  <section class="content-section" data-liquid-bg-section data-bg-color="#160f39">
+  <section class="content-section" data-liquid-bg-section data-bg-color="#013330">
     <div class="custom-container grid grid-cols-12 gap-4">
       <div class="grid__col--full">
 
         <div class="content-section__head">
-          <h2 class="works__title content-section__title scroll-js-title" data-splitting data-fx="typewriter-scramble">
+          <h2 class="works__title content-section__title scroll-js-title " data-splitting data-fx="typewriter-scramble">
             My Tech Arsenal</h2>
-          <span class="works__decorative content-section__decorative scroll-js-title" data-splitting
+          <span class="works__decorative content-section__decorative scroll-js-title !text-[#e5ffc3]/50" data-splitting
             data-fx="scale-words">Skills</span>
         </div>
         <div class="overflow-hidden relative">

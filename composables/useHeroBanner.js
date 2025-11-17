@@ -17,7 +17,6 @@ export function useHeroAnimations() {
         heroButton = document.querySelector(".hero-header__scroll");
 
         if (!heroTitle) {
-            console.warn("Hero title not found!");
             return;
         }
 
@@ -26,7 +25,6 @@ export function useHeroAnimations() {
 
         heroChars = heroTitle.querySelectorAll(".char");
         if (!heroChars.length) {
-            console.warn("No characters found for hero animation.");
             return;
         }
 

@@ -1,5 +1,5 @@
 <template>
-<section class="lab content-section" data-liquid-bg-section data-bg-color="#f3e8ff">
+  <section class="lab content-section" data-liquid-bg-section data-bg-color="#190066">
     <div class="custom-container grid">
       <div class="grid__col--full">
 
@@ -15,7 +15,7 @@
 
         <!-- Description -->
         <div class="lab__wrapper content-section__wrapper">
-          <div class="lab__description content-section__description scroll-js-content" data-splitting
+          <div class="lab__description content-section__description scroll-js-content text-[#cce7ff]" data-splitting
             data-fx="scroll-opacity">
             <p>
               In a world full of cookie-cutter websites, I create unique digital experiences that blend stunning design

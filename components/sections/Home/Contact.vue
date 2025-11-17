@@ -1,9 +1,9 @@
 <template>
-<section class="contact content-section s is--footer" data-liquid-bg-section data-bg-color="#dbeafe">
+    <section class="contact content-section s is--footer" data-liquid-bg-section data-bg-color="#190066">
         <div class="custom-container grid">
             <div class="grid__col--full">
                 <div class="relative">
-                    <a class="contact__link" href="mailto:info@alessioatzeni.com" title="Contact Me" data-pointer="link"
+                    <a class="contact__link" href="mailto:chetan.dmc@gmail.com" title="Contact Me" data-pointer="link"
                         data-pointer-text="Say Hi! 🤗">
                         <h2 class="contact__title !font-outfit">Let's Talk</h2>
                     </a>
@@ -191,7 +191,7 @@ onMounted(() => {
 </script>
 <style>
 .contact__title {
-    color: #fff;
+    color: #cce7ff;
     display: grid;
     font-size: 16vw;
     font-weight: 900;
@@ -204,8 +204,8 @@ onMounted(() => {
 }
 
 .contact__title span {
-    background-color: #080618;
-    color: #d8d2cf;
+    background-color: #190066;
+    color: #cce7ff;
     grid-area: 1 / 1 / 2 / 2;
     line-height: .839;
     padding-bottom: 1.25rem;

@@ -67,7 +67,6 @@ export const inspiraImageParticles = () => {
       try {
         this["_" + value + "InitContext"]();
       } catch (e) {
-        console.log(e);
         if (value !== "default") {
           this.renderer = "default";
         }
@@ -289,13 +288,13 @@ export const inspiraImageParticles = () => {
       this.context.shaderSource(vertexShader, this.vertexShaderScript);
       this.context.compileShader(vertexShader);
       if (!this.context.getShaderParameter(vertexShader, this.context.COMPILE_STATUS)) {
-        console.log(this.context.getShaderInfoLog(vertexShader));
+        // Shader compilation error - silent fail
       }
       const fragmentShader = this.context.createShader(this.context.FRAGMENT_SHADER);
       this.context.shaderSource(fragmentShader, this.fragmentShaderScript);
       this.context.compileShader(fragmentShader);
       if (!this.context.getShaderParameter(fragmentShader, this.context.COMPILE_STATUS)) {
-        console.log(this.context.getShaderInfoLog(fragmentShader));
+        // Shader compilation error - silent fail
       }
       this.program = this.context.createProgram();
       this.context.attachShader(this.program, vertexShader);

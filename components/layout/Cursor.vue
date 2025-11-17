@@ -117,8 +117,6 @@ function initCursor() {
     window.addEventListener("mousemove", handleMouseMove);
     addPointerEvents();
     gsap.ticker.add(updateCursor);
-  } else {
-    console.error("Cursor elements not found in the DOM.");
   }
 }
 

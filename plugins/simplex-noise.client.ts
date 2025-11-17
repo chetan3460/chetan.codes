@@ -5,9 +5,8 @@ export default defineNuxtPlugin(async () => {
     try {
       const SimplexNoise = (await import('simplex-noise')).default;
       window.SimplexNoise = SimplexNoise;
-      console.log('✅ SimplexNoise loaded:', window.SimplexNoise);
     } catch (error) {
-      console.error('❌ Failed to load SimplexNoise:', error);
+      // Failed to load SimplexNoise - silent fail
     }
   }
 });

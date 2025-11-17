@@ -207,7 +207,8 @@ const titleStyle = computed(() => ({
 
 <template>
   <div ref="containerRef"
-    class="relative w-full h-full overflow-hidden bg-transparent flex items-center justify-center pointer-events-none ">
+    class="relative w-full h-full overflow-hidden bg-transparent flex flex-col items-center justify-center pointer-events-none ">
+
     <h1 ref="titleRef"
       :class="`text-pressure-title ${className} ${flex ? 'flex justify-between' : ''} ${stroke ? 'stroke' : ''} uppercase text-center`"
       :style="titleStyle">

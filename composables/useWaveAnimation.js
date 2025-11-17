@@ -108,16 +108,12 @@ class WaveAnimationManager {
    * Initialize the wave animation
    */
   init() {
-    console.log("[Wave Animation] Initializing...");
     this.canvas = document.querySelector(".hero-header__canvas");
-    console.log("[Wave Animation] Canvas found:", this.canvas);
     if (!this.canvas) {
-      console.warn("Canvas element '.hero-header__canvas' not found");
       return false;
     }
 
     this.context = this.canvas.getContext("2d");
-    console.log("[Wave Animation] Context created:", !!this.context);
     this.setSizes();
     this.setupCanvas();
     this.setupRandomness();

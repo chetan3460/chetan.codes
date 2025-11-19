@@ -18,28 +18,28 @@ export function useAnimations() {
 
 
         elements.forEach((element) => {
-        const tween = gsap.fromTo(
-            element,
-            {
-                'will-change': 'opacity, transform',
-                opacity: 0,
-                scale: 0,
-                rotation: -50,
-            },
-            {
-                ease: 'sine.inOut',
-                rotation: 10,
-                opacity: 0.5,
-                scale: 1,
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 85%',
-                    end: 'bottom 50%',
-                    scrub: true,
+            const tween = gsap.fromTo(
+                element,
+                {
+                    'will-change': 'opacity, transform',
+                    opacity: 0,
+                    scale: 0,
+                    rotation: -50,
                 },
-            }
-        )
-        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger)
+                {
+                    ease: 'sine.inOut',
+                    rotation: 10,
+                    opacity: 0.5,
+                    scale: 1,
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                        end: 'bottom 50%',
+                        scrub: true,
+                    },
+                }
+            )
+            if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger)
         })
     }
 
@@ -469,42 +469,37 @@ export function useAnimations() {
         if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
     }
 
-    // Data Effect 27: Words flying in from random positions with 3D perspective
+    // Data Effect 27: Characters scale in with alternating transform origins
     function effectTitleDataEffect27(element) {
         const words = [...element.querySelectorAll('.word')];
         if (!words.length) return;
-        
-        words.forEach(word => gsap.set(word.parentNode, { perspective: 1000 }));
 
-        const tween = gsap.fromTo(words, {
-            'will-change': 'opacity, transform', 
-            z: () => gsap.utils.random(500, 950),
-            opacity: 0,
-            xPercent: () => gsap.utils.random(-100, 100),
-            yPercent: () => gsap.utils.random(-10, 10),
-            rotationX: () => gsap.utils.random(-90, 90)
-        }, 
-        {
-            ease: 'expo',
-            opacity: 1,
-            rotationX: 0,
-            rotationY: 0,
-            xPercent: 0,
-            yPercent: 0,
-            z: 0,
-            scrollTrigger: {
-                trigger: element,
-                start: 'center center',
-                end: '+=300%',
-                scrub: true,
-                pin: element.parentNode,
+        for (const [pos, word] of words.entries()) {
+            const chars = word.querySelectorAll('.char');
+            if (!chars.length) continue;
+
+            const tween = gsap.fromTo(chars, {
+                'will-change': 'transform',
+                transformOrigin: `${pos % 2 ? 0 : 100}% ${pos % 2 ? 100 : 0}%`,
+                scale: 0
             },
-            stagger: {
-                each: 0.006,
-                from: 'random'
-            }
-        });
-        if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
+                {
+                    ease: 'power4',
+                    scale: 1,
+                    stagger: {
+                        each: 0.03,
+                        from: pos % 2 ? 'end' : 'start'
+                    },
+                    scrollTrigger: {
+                        trigger: word,
+                        start: 'top bottom-=10%',
+                        end: 'top top',
+                        scrub: true,
+                    }
+                });
+
+            if (tween.scrollTrigger) scrollTriggers.push(tween.scrollTrigger);
+        }
     }
 
     function contentAnimation() {

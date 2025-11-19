@@ -2,87 +2,57 @@
   {
     "id": "01",
     "title": "WordPress Engineering",
-    "description": "Custom themes, plugins, ACF ecosystems, API integrations & high-performance, scalable WordPress builds — clean, fast, and built from scratch without bloat.",
+    "description": "Custom themes, plugins and ACF-driven builds. Fast, secure and scalable WordPress architecture tailored for performance.",
     "category": "wordpress",
     "color": "#1E90FF",
     "icon": "Wrench",
     "tags": [
-      "Custom Themes",
+      "Themes",
       "Plugins",
       "ACF",
-      "REST API",
-      "WooCommerce",
-      "CPT",
-      "Taxonomies",
-      "Gutenberg",
-      "Classic Editor",
-      "Security",
-      "Performance",
-      "Scalable Architecture"
+      "REST API"
     ]
   },
   {
     "id": "02",
     "title": "Frontend Development",
-    "description": "Modern UI engineering with Vue, Nuxt, Tailwind & Vite — smooth animations, responsive layouts, and clean component-driven architecture.",
+    "description": "Modern UI development using Nuxt, Vue and Tailwind. Smooth animations, responsive layouts and fast Vite-powered builds.",
     "category": "frontend",
     "color": "#9A6BFF",
     "icon": "Layout",
     "tags": [
       "Nuxt",
       "Vue",
-      "JavaScript",
-      "Vite",
       "Tailwind",
-      "GSAP",
-      "Animations",
-      "UI Components",
-      "Responsive Design",
-      "SSR",
-      "SPA",
-      "TypeScript"
+      "GSAP"
     ]
   },
   {
     "id": "03",
     "title": "AI-Powered Workflows",
-    "description": "Intelligent workflows using AI-assisted coding, automation, plugin scaffolding, debugging & content generation — build faster with precision.",
+    "description": "AI-assisted coding, automation and intelligent tooling. Build smarter systems that reduce development time and errors.",
     "category": "ai",
     "color": "#00F0FF",
     "icon": "Bot",
     "tags": [
       "AI Automation",
       "GPT API",
-      "Plugin Generator",
-      "Code Scaffolding",
-      "Debugging",
-      "Content Generation",
-      "API Integrations",
-      "Automation Scripts",
-      "AI Tooling",
-      "Workflow Optimization"
+      "Code Gen",
+      "Debugging"
     ]
   },
   {
     "id": "04",
     "title": "Performance Optimization",
-    "description": "Advanced performance tuning, asset optimization, caching strategies, and Core Web Vitals improvements — delivering ultra-fast, highly optimized websites.",
+    "description": "Improved Core Web Vitals, caching and asset tuning. Deliver ultra-fast, optimized experiences across all devices.",
     "category": "performance",
     "color": "#2DFF88",
     "icon": "Rocket",
     "tags": [
       "Core Web Vitals",
       "Caching",
-      "CDN",
-      "Lazy Loading",
-      "Vite Optimization",
-      "Compression",
-      "Asset Minification",
-      "Image Optimization",
-      "Preloading",
-      "Code Splitting",
-      "Lighthouse Audits",
-      "Speed Tuning"
+      "Optimization",
+      "Compression"
     ]
   }
 ]

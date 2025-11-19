@@ -1,5 +1,5 @@
 <template>
-    <section class="h-svh w-screen relative" data-liquid-bg-section data-bg-color="#0a0521">
+    <section class="h-svh w-screen relative" data-liquid-bg-section data-bg-color="#011c42">
         <!-- Threads Background -->
         <!-- <Threads :color="threadColor" :amplitude="threadParams.amplitude" :distance="threadParams.distance"
             :enableMouseInteraction="true" /> -->
@@ -18,11 +18,11 @@
         </div>
         <div class="hero-header__wrapper items-end size-full relative custom-container custom-gird pb-12 z-10">
             <div class="hero-header__bottom col-start-1 col-span-12">
-                <h2 class="hero-header__description font-normal text-center !font-OutfitPortfolio  text-base md:text-2xl lg:text-3xl leading-5 md:leading-relaxed text-[#e6e6e1]"
+                <p class="hero-header__description font-normal text-center !font-Outfit text-base md:text-2xl  text-[#e6e6e1]"
                     data-splitting>
                     Turning pixels into experiences. Code into emotion. <br />
                     Specializing in WordPress, Nuxt.js, Tailwind, Vite <br>& high-performance front-end engineering.
-                </h2>
+                </p>
             </div>
         </div>
     </section>

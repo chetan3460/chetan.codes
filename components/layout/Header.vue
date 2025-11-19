@@ -1,13 +1,14 @@
 <template>
     <header class="header left-0 fixed top-0 w-full z-10" data-liquid-bg="true"
         data-liquid-bg-options='{"setBgTo": ".header__pinwheel, .header__pinwheel-svg svg", "manipulateColor": [{"darken": 30}, {"brighten": 15}, {"saturate": 20}]}'>
-        <div class="container-fluid header__wrapper w-full   backdrop-blur-[10px]   py-5 grid grid-cols-12 gap-4">
+        <div class="container-fluid header__wrapper      grid grid-cols-12 gap-4">
             <!-- Logo -->
             <div
-                class="header__block header__block--left flex items-center col-span-8 lg:col-span-4 col-start-1 lg:col-start-5 justify-center">
-                <a href="/" class="header__logo flex items-center" data-pointer="link" data-pointer-text="Reload">
+                class="header__block header__block--left   flex items-start col-span-8 lg:col-span-4 col-start-1 lg:col-start-1 justify-start">
+                <a href="/" class="backdrop-blur-[10px]  p-5 header__logo flex items-center " data-pointer="link"
+                    data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1]  overflow-hidden rounded-full">
-                        <span class="header__pinwheel-svg svg-data  size-16 p-1.5 rotate-[-24deg] inline-flex">
+                        <span class="header__pinwheel-svg svg-data  size-10 p-1.5 rotate-[-24deg] inline-flex">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 45 45" fill="none"
                                 class="svg-7 flower-svg"
@@ -42,7 +43,7 @@
                         </span>
 
                     </div>
-                    <div class="header__author relative z-[2] px-[0.3125rem] text-base ">
+                    <div class="header__author relative z-[2] px-[0.3125rem] text-xs ">
                         <span class="header__name text-[var(--col-text)] font-semibold uppercase block">Chetan
                             Dhargalkar</span>
                         <span class="header__role text-[var(--col-text-500)] font-medium uppercase block">Creative

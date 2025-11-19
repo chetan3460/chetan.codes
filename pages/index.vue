@@ -1,10 +1,11 @@
 <template>
     <SectionsHomeBanner />
     <SectionsHomeAbout />
-    <!-- <SectionsHomeQuote /> -->
     <!-- <SectionsHomeWorks /> -->
     <SectionsHomeSkills />
-    <SectionsHomeProcess />
+    <SectionsHomeQuote />
+
+    <!-- <SectionsHomeProcess /> -->
 
     <SectionsHomeContact />
 

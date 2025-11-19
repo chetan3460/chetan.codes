@@ -154,7 +154,7 @@ h6 {
 
 :root {
   font-family: 'Outfit', sans-serif;
-  --size: 1200;
+  /* --size: 1200; */
 
   /* Inspira UI Variables */
   --background: 0 0% 100%;
@@ -217,7 +217,7 @@ h6 {
 body,
 body .site-main {
   overflow-x: hidden;
-  position: relative;
+  /* position: relative; */
   width: 100%;
 }
 
@@ -274,10 +274,10 @@ section {
 
 /* Section Title */
 .content-section__head {
-  @apply relative mb-19  md:mb-25 lg:mb-75;
+  @apply relative mb-19  md:mb-25 lg:mb-50;
 }
 .content-section__title {
-  @apply font-outfit text-5xl  md:text-xl lg:text-[13rem] font-medium leading-[1] text-center;
+  @apply font-outfit text-4xl  md:text-xl lg:text-[9rem] font-medium leading-[1] text-center;
 }
 .content-section__decorative {
   @apply text-[var(--col-text-deco)]
@@ -288,9 +288,8 @@ section {
          select-none
          whitespace-nowrap
          -z-[1]
-        text-[25vw]   
-         md:text-[30vw]   
-         lg:text-[33vw];
+        text-[28vw]   
+         md:text-[30vw];
 }
 
 .content-section__decorative,
@@ -305,7 +304,7 @@ section {
 }
 
 .content-section__description p {
-  @apply font-normal text-lg md:text-2xl lg:text-5xl !leading-[1.4] mb-6 lg:mb-8;
+  @apply font-normal text-lg md:text-2xl lg:text-3xl  mb-6 lg:mb-8;
 }
 
 /* Data Effect 27 Styles */
@@ -379,6 +378,22 @@ header path[logo-fill] {
     100% {
       transform: rotate(215deg) translateX(-500px);
       opacity: 0;
+    }
+  }
+}
+
+@theme inline {
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
+
+  @keyframes cell-ripple {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.4;
     }
   }
 }

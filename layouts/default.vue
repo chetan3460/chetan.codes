@@ -1,8 +1,15 @@
 <template>
     <BackgroundProvider>
+        <!-- Global background effect behind everything -->
+        <ClientOnly>
+            <div class="pointer-events-auto fixed inset-0 z-0">
+                <UiBackgroundRippleEffect />
+            </div>
+        </ClientOnly>
+
         <LayoutHeader />
 
-        <main class="site-main" id="lqd-site-content">
+        <main class="site-main flex flex-col gap-24" id="lqd-site-content">
             <slot />
             <LayoutFooter />
             <!-- <ClientOnly>

@@ -77,7 +77,9 @@
 </template>
 
 <script setup>
-import imageSrc from '/assets/Images/iteration.png'; // Importing from assets
+import { useAnimations } from "@/composables/useAnimations"
 
 const { data: labs } = await useFetch('json/lab.json')
+
+useAnimations()
 </script>

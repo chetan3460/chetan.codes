@@ -4,7 +4,7 @@
     "title": "WordPress Engineering",
     "description": "Custom themes, plugins and ACF-driven builds. Fast, secure and scalable WordPress architecture tailored for performance.",
     "category": "wordpress",
-    "color": "#1E90FF",
+    "color": "#79c5b2",
     "icon": "Wrench",
     "tags": [
       "Themes",
@@ -18,7 +18,7 @@
     "title": "Frontend Development",
     "description": "Modern UI development using Nuxt, Vue and Tailwind. Smooth animations, responsive layouts and fast Vite-powered builds.",
     "category": "frontend",
-    "color": "#9A6BFF",
+    "color": "#79c5b2",
     "icon": "Layout",
     "tags": [
       "Nuxt",
@@ -32,7 +32,7 @@
     "title": "AI-Powered Workflows",
     "description": "AI-assisted coding, automation and intelligent tooling. Build smarter systems that reduce development time and errors.",
     "category": "ai",
-    "color": "#00F0FF",
+    "color": "#79c5b2",
     "icon": "Bot",
     "tags": [
       "AI Automation",
@@ -46,7 +46,7 @@
     "title": "Performance Optimization",
     "description": "Improved Core Web Vitals, caching and asset tuning. Deliver ultra-fast, optimized experiences across all devices.",
     "category": "performance",
-    "color": "#2DFF88",
+    "color": "#79c5b2",
     "icon": "Rocket",
     "tags": [
       "Core Web Vitals",

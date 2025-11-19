@@ -29,7 +29,6 @@
 </template>
 
 <script setup>
-import Threads from '~/components/ui/Threads.vue'
 import TextPressure from '~/components/ui/TextPressure.vue'
 import WaveAnimation from '~/components/ui/WaveAnimation.vue'
 import { ref, reactive, onMounted, onUnmounted } from 'vue'

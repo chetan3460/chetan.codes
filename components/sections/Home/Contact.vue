@@ -5,7 +5,7 @@
                 <div class="relative">
                     <a class="contact__link" href="mailto:chetan.dmc@gmail.com" title="Contact Me" data-pointer="link"
                         data-pointer-text="Say Hi! 🤗">
-                        <h2 class="contact__title !font-outfit">Let's Talk</h2>
+                        <h2 class="contact__title font-outfit">Let's Talk</h2>
                     </a>
                 </div>
             </div>
@@ -186,12 +186,16 @@ onMounted(() => {
     // revealFooter();
 
     textRepetitionFx();
+    // After DOM duplication and ScrollTrigger creation, force a refresh in case layout shifts
+    requestAnimationFrame(() => {
+        try { ScrollTrigger.refresh(); } catch (_) { /* no-op */ }
+    });
 });
 
 </script>
 <style>
 .contact__title {
-    color: #cce7ff;
+color: var(--col-accent) !important;
     display: grid;
     font-size: 16vw;
     font-weight: 900;
@@ -204,8 +208,8 @@ onMounted(() => {
 }
 
 .contact__title span {
-    background-color: #190066;
-    color: #cce7ff;
+    background-color: #000;
+    color: #fff;
     grid-area: 1 / 1 / 2 / 2;
     line-height: .839;
     padding-bottom: 1.25rem;
@@ -228,11 +232,11 @@ onMounted(() => {
 }
 
 .footer__overlay {
-    background-color: #1fa5fd;
+background-color: var(--col-accent);
 }
 
 .footer__overlay {
-    background-color: #1fa5fd;
+    background-color: #34e8bb;
 }
 
 @media (hover: hover) and (pointer:fine) {

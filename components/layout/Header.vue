@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div
                 class="header__block header__block--left   flex items-start col-span-8 lg:col-span-4 col-start-1 lg:col-start-1 justify-start">
-                <a href="/" class="backdrop-blur-[10px]  p-5 header__logo flex items-center " data-pointer="link"
+<a href="/" class="backdrop-blur-[10px] bg-white/10 dark:bg-black/20 supports-[backdrop-filter]:bg-white/10 supports-[backdrop-filter]:dark:bg-black/20 header__logo flex items-center " data-pointer="link"
                     data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1]  overflow-hidden rounded-full">
                         <span class="header__pinwheel-svg svg-data  size-10 p-1.5 rotate-[-24deg] inline-flex">
@@ -21,7 +21,7 @@
                                     style="fill: #f3f4f6"
                                     d="M18.5723 21.9395C17.6066 21.9999 15.7828 22.7674 13.7726 24.23C10.1654 26.8546 5.73845 25.3808 2.62318 22.7554C2.00863 22.2963 1.27889 21.9777 0.218144 21.9395L-0.000201858 21.9395C0.0522426 21.9395 0.103909 21.9388 0.154822 21.9375C0.103909 21.9362 0.0522426 21.9356 -0.000201858 21.9356L0.218144 21.9356C1.27889 21.8973 2.00863 21.5787 2.62318 21.1196C5.73845 18.4943 10.1654 17.0204 13.7726 19.645C15.7828 21.1076 17.6066 21.8751 18.5723 21.9356L18.6914 21.9356C18.6645 21.9356 18.6367 21.9362 18.6082 21.9375C18.6367 21.9388 18.6645 21.9395 18.6914 21.9395L18.5723 21.9395Z">
                                 </path>
-                                <path logo-fill data-type="accent" style="fill: #60a5fa"
+                                <path logo-fill data-type="accent" style="fill: #34e8bb"
                                     d="M22.537 19.8393C19.9136 16.7787 16.2408 8.526 22.537 0C25.1603 3.27923 28.8331 11.838 22.537 19.8393Z">
                                 </path>
                                 <path logo-fill data-type="pinwheel" style="fill: #f3f4f6"
@@ -30,7 +30,7 @@
                                 <path logo-fill data-type="pinwheel" style="fill: #f3f4f6"
                                     d="M27.7842 17.5481C27.8935 14.5422 30.178 8.20232 38.4417 6.89062C38.0044 10.1699 35.2608 16.8923 27.7842 17.5481Z">
                                 </path>
-                                <path logo-fill data-type="accent" style="fill: #60a5fa"
+                                <path logo-fill data-type="accent" style="fill: #34e8bb"
                                     d="M6.63281 37.3919C6.74212 34.3859 9.02665 28.0461 17.2903 26.7344C16.8531 30.0136 14.1095 36.736 6.63281 37.3919Z">
                                 </path>
                                 <path logo-fill data-type="pinwheel" style="fill: #f3f4f6"

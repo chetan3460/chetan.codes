@@ -7,6 +7,16 @@
 import { ref, watch, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import { useWaveAnimation } from '@/composables/useWaveAnimation'
 
+// Get primary color from CSS variable --col-accent
+function getPrimaryRGB() {
+  const hex = getComputedStyle(document.documentElement).getPropertyValue('--col-accent').trim()
+  const h = hex.startsWith('#') ? hex.slice(1) : hex
+  const r = parseInt(h.slice(0, 2), 16)
+  const g = parseInt(h.slice(2, 4), 16)
+  const b = parseInt(h.slice(4, 6), 16)
+  return { r, g, b }
+}
+
 const props = defineProps({
   // Animation parameters
   amplitude: {
@@ -15,7 +25,7 @@ const props = defineProps({
   },
   speed: {
     type: Number,
-    default: 0.003
+    default: 0.2
   },
   lines: {
     type: Number,
@@ -29,7 +39,9 @@ const props = defineProps({
   // Color control
   color: {
     type: Object,
-    default: () => ({ r: 255, g: 29, b: 72 })
+    // Ignored in favor of FIXED_COLOR; keep prop for API compatibility
+    // Note: defineProps default cannot reference local const in <script setup>
+    default: () => ({ r: 52, g: 232, b: 187 })
   },
   theme: {
     type: String,
@@ -78,9 +90,10 @@ watch(() => props.lineStroke, (newVal) => {
   }
 })
 
-watch(() => props.color, (newVal) => {
+// Always sync with CSS variable when prop changes
+watch(() => props.color, () => {
   if (manager && manager.parameters) {
-    Object.assign(manager.parameters.waveColor, newVal)
+    Object.assign(manager.parameters.waveColor, getPrimaryRGB())
   }
 })
 
@@ -108,17 +121,21 @@ onMounted(() => {
         manager.canvas = null
         manager.context = null
       }
-      
+
       manager.canvas = canvas
       manager.context = canvas.getContext('2d')
       manager.setSizes()
       manager.setupCanvas()
+// Force wave color from CSS var
+      if (manager.parameters && manager.parameters.waveColor) {
+        Object.assign(manager.parameters.waveColor, getPrimaryRGB())
+      }
       manager.setupRandomness()
       manager.attachEventListeners()
-      
+
       isReady.value = true
       emit('initialized', manager)
-      
+
       if (props.autoPlay) {
         startAnimation()
       }

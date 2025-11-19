@@ -1,0 +1,129 @@
+@layer base {
+  html {
+    @apply min-h-screen relative w-full antialiased;
+    font-kerning: none;
+    text-rendering: optimizeSpeed;
+  }
+  @media (min-width: 1025px) {
+    html { font-size: clamp(1px, 16px, 1000vw / var(--size)); }
+  }
+}
+
+/* Global variables */
+@theme {
+  --font-body: 'Outfit', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-OutfitPortfolio: 'OutfitPortfolio', sans-serif;
+  --preloader-bg: #fff;
+  --preloader-text: #000;
+  --preloader-accent: #1fa5fd;
+  --cursor-small: #fff;
+  --cursor-large: #1fa5fd;
+  --cursor-text: #000;
+  --canvas-bg: #080618;
+  --canvas-text: #fff;
+  --overlay-project: rgba(0, 0, 0, 0.7);
+  --overlay-about: rgba(0, 0, 0, 0.3);
+  --repeat-text-bg: #000;
+  --col-pinwheel: #fff;
+  --col-border: #1fa5fd;
+  --col-arrow: #fff;
+  --col-accent: #34e8bb;
+  --col-text: #ecf5ff;
+  --col-text-500: hsla(0, 0%, 100%, 0.7);
+  --col-text-deco: hsla(0, 0%, 100%, 0.05);
+  --col-bg: #080618;
+  --col-bg-fake: transparent;
+  --ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+:root {
+  font-family: 'Outfit', sans-serif;
+  /* --size: 1200; */
+
+  /* Inspira UI Variables */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+  --ease-linear: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+  --ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
+  --ease-out-sine: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --ease-in-out-sine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  --ease-out-back: cubic-bezier(0.25, 2, 0.5, 0.9);
+  --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --gradient-color-1: #050316;
+  --gradient-color-2: #07041c;
+  --gradient-color-3: #0a0521;
+  --gradient-color-4: #0c0727;
+  --gradient-color-5: #0f0a2e;
+  --gradient-color-6: #130d34;
+  --gradient-color-7: #160f39;
+  --gradient-color-8: #1a1342;
+  --gradient-color-9: #1f184c;
+  --gradient-color-10: #251e57;
+}
+
+/* Body + headings */
+body {
+  font-family: var(--font-body);
+  color: #fff;
+  background-color: #000;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-outfit); color: var(--col-accent); }
+
+/* Global element tweaks */
+canvas, img, picture, svg, video { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+h1,h2,h3,h4,h5,h6,p { overflow-wrap: break-word; }
+p { text-wrap: pretty; }
+h1,h2,h3,h4,h5,h6 { text-wrap: balance; }
+
+/* Lenis states */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Layout */
+body, body .site-main { overflow-x: hidden; width: 100%; }

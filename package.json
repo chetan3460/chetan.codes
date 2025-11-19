@@ -17,7 +17,7 @@
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
     "@tailwindcss/vite": "^4.1.8",
-    "@types/matter-js": "^0.20.2",
+    "@tresjs/core": "^4.0.2",
     "@vueuse/core": "^14.0.0",
     "clsx": "^2.1.1",
     "gsap": "^3.12.7",
@@ -28,15 +28,18 @@
     "simplex-noise": "^4.0.3",
     "splitting": "^1.1.0",
     "tailwind-merge": "^3.3.1",
+    "three": "^0.170.0",
     "tinycolor2": "^1.6.0",
-    "vue": "latest",
-    "vue-router": "latest"
+    "vue": "latest"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "eslint": "^9.12.0",
+    "prettier": "^3.3.3",
+    "@typescript-eslint/parser": "^8.8.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "eslint-config-prettier": "^9.1.0"
   }
 }

@@ -45,7 +45,9 @@ export function useAnimations() {
 
     function headingAnimation() {
         document.querySelectorAll(".scroll-js-title[data-splitting]").forEach((element) => {
-            const effectType = element.dataset.fx || "default";
+            // Normalize effect name so values like "data-effect27" and "effect27" both work
+            const raw = element.dataset.fx || "default";
+            const effectType = raw.replace(/^data-/, "");
             animateHeading(element, effectType);
         });
     }
@@ -85,7 +87,7 @@ export function useAnimations() {
             case "liquid-morph":
                 effectTitleLiquidMorph(element);
                 break;
-            case "data-effect27":
+            case "effect27":
                 effectTitleDataEffect27(element);
                 break;
         }
@@ -602,15 +604,35 @@ export function useAnimations() {
     }
 
     onMounted(() => {
+        // Apply Splitting first; then wait a frame so DOM (.char/.word) is fully in place
         applySplitting(); // Ensure Splitting.js is applied before animations
-        aboutImageAnimation();
-        headingAnimation();
-        contentAnimation();
-        listAnimation();
+        requestAnimationFrame(() => {
+            headingAnimation();
+            contentAnimation();
+            listAnimation();
+            aboutImageAnimation();
+            // Give ScrollTrigger a moment to calculate after all timelines are created
+            setTimeout(() => {
+                if (typeof window !== 'undefined') {
+                    try { ScrollTrigger.refresh(); } catch (_) { /* no-op */ }
+                }
+            }, 0);
+        });
+        // Also refresh on window load (fonts/images can shift layout)
+        window.addEventListener('load', () => {
+            try { ScrollTrigger.refresh(); } catch (_) { /* no-op */ }
+        }, { once: true });
+        // Refresh on resize for safety
+        window.addEventListener('resize', () => {
+            try { ScrollTrigger.refresh(); } catch (_) { /* no-op */ }
+        });
     });
 
     onUnmounted(() => {
-        // Cleanup all ScrollTrigger instances to prevent memory leaks
+        // Cleanup listeners and ScrollTrigger instances to prevent memory leaks
+        window.removeEventListener('resize', () => {
+            try { ScrollTrigger.refresh(); } catch (_) { /* no-op */ }
+        });
         scrollTriggers.forEach(st => st.kill());
     });
 }

@@ -152,19 +152,35 @@ class WaveAnimationManager {
    */
   attachEventListeners() {
     const handleMouseMove = this.handleMouseMove.bind(this);
+    const handleMouseLeave = this.handleMouseLeave.bind(this);
     const handleResize = this.handleResize.bind(this);
 
     this.eventListeners.set("mousemove", handleMouseMove);
+    this.eventListeners.set("mouseleave", handleMouseLeave);
     this.eventListeners.set("resize", handleResize);
 
-    window.addEventListener("mousemove", handleMouseMove);
+    // Use canvas-local mouse events to avoid drift when scrolling
+    if (this.canvas) {
+      this.canvas.addEventListener("mousemove", handleMouseMove);
+      this.canvas.addEventListener("mouseleave", handleMouseLeave);
+    }
     window.addEventListener("resize", handleResize);
   }
 
   handleMouseMove = (event) => {
+    if (!this.canvas) return;
     const rect = this.canvas.getBoundingClientRect();
-    this.cursor.x = (event.clientX - rect.left) / this.state.width * 2 - 1;
-    this.cursor.y = (event.clientY - rect.top) / this.state.height * 2 - 1;
+    const nx = (event.clientX - rect.left) / rect.width * 2 - 1;
+    const ny = (event.clientY - rect.top) / rect.height * 2 - 1;
+    // Clamp to [-1, 1] to prevent exaggerated parallax when out of bounds
+    this.cursor.x = Math.max(-1, Math.min(1, nx));
+    this.cursor.y = Math.max(-1, Math.min(1, ny));
+  };
+
+  handleMouseLeave = () => {
+    // Reset to center when cursor leaves canvas so parallax returns to neutral
+    this.cursor.x = 0;
+    this.cursor.y = 0;
   };
 
   handleResize = () => {

@@ -7,6 +7,7 @@
 
     <!-- <SectionsHomeProcess /> -->
 
+    <!-- <SectionsHomeCanvasRevealEffectDemo /> -->
     <SectionsHomeContact />
 
 </template>

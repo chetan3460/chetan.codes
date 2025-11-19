@@ -1,0 +1,26 @@
+/* Layout helpers */
+.custom-container { @apply w-full mx-auto px-3 md:px-6; }
+.container-fluid { @apply w-full p-4 md:px-8; }
+.custom-gird { @apply grid gap-3 md:gap-7 lg:gap-12 grid-cols-12; }
+.grid__col--full { grid-column: 1 / span 12; }
+
+/* Section spacing & headings */
+.content-section { @apply mt-[20vh] lg:mt-[40vh]; }
+.content-section__head { @apply relative mb-19 md:mb-25 lg:mb-50; }
+.content-section__title { @apply font-outfit text-4xl md:text-xl lg:text-[9rem] font-medium leading-[1] text-center; }
+.content-section__decorative { @apply text-[var(--col-text-deco)] font-black leading-[1] pointer-events-none uppercase select-none whitespace-nowrap -z-[1] text-[28vw] md:text-[30vw]; }
+.content-section__decorative,
+.header__colors-picker,
+.work__item-data,
+.work__item-deco { left: 50%; position: absolute; text-align: center; top: 50%; transform: translate(-50%, -50%); }
+.content-section__description p { @apply font-normal text-lg md:text-2xl lg:text-3xl mb-6 lg:mb-8; }
+
+/* Content helpers used by animations */
+.content { position: relative; }
+.content__title { @apply font-cormorant text-center; }
+.char-wrap { display: inline-block; position: relative; overflow: hidden; }
+
+/* Header transitions */
+header .header__name,
+header .header__role { transition: color 0.3s ease; }
+header path[logo-fill] { transition: fill 0.3s ease; }

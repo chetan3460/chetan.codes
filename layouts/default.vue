@@ -1,25 +1,24 @@
 <template>
-    <BackgroundProvider>
-        <!-- Global background effect behind everything -->
-        <ClientOnly>
-            <div class="pointer-events-auto fixed inset-0 z-0">
-                <UiBackgroundRippleEffect />
-            </div>
-        </ClientOnly>
+    <!-- <BackgroundProvider>
+    </BackgroundProvider> -->
+    <ClientOnly>
+        <div class="pointer-events-auto fixed inset-0 z-0">
+            <UiBackgroundRippleEffect />
+        </div>
+    </ClientOnly>
 
-        <LayoutHeader />
+    <LayoutHeader />
 
-        <main class="site-main flex flex-col gap-24" id="lqd-site-content">
-            <slot />
-            <LayoutFooter />
-            <!-- <ClientOnly>
+    <main class="site-main flex flex-col gap-24" id="lqd-site-content">
+        <slot />
+        <LayoutFooter />
+        <!-- <ClientOnly>
                 <SmoothCursor />
             </ClientOnly> -->
-            <ClientOnly>
-                <SleekLineCursor />
-            </ClientOnly>
-        </main>
-    </BackgroundProvider>
+        <ClientOnly>
+            <SleekLineCursor />
+        </ClientOnly>
+    </main>
 </template>
 
 <script setup>

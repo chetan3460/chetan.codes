@@ -5,6 +5,9 @@ import tinycolor from 'tinycolor2'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Toggle to visualize where each section transition starts/ends
+const SHOW_MARKERS = false
+
 export const useLiquidBgColor = () => {
   let scrollTriggers: any[] = []
 
@@ -39,9 +42,10 @@ export const useLiquidBgColor = () => {
       applyColorToHeader(initialColor)
     }
 
-    // Setup GSAP animations for each section transition
+    // Setup GSAP animations for each section transition (match Hub HTML behavior)
     for (let idx = 0; idx < sections.length - 1; idx++) {
-      const section = sections[idx]
+      const currSection = sections[idx]
+      const nextSection = sections[idx + 1]
       const fromColor = colors[idx]
       const toColor = colors[idx + 1]
       
@@ -49,16 +53,21 @@ export const useLiquidBgColor = () => {
       const tween = gsap.to(mainContent, {
         backgroundColor: toColor,
         duration: 1,
+        ease: 'none',
         immediateRender: false,
       })
 
-      // Create ScrollTrigger
+      // Create ScrollTrigger that starts when NEXT section hits bottom of viewport
       const trigger = ScrollTrigger.create({
-        trigger: section,
+        id: `bg-${idx}`,
+        trigger: nextSection,             // next section controls transition
         animation: tween,
-        start: 'top top',
-        end: `+=${section.offsetHeight}`,
+        start: 'top bottom',              // start when next section top reaches viewport bottom
+        end: 'bottom bottom',             // end over next section height
         scrub: 0.1,
+        markers: SHOW_MARKERS ? { startColor: 'cyan', endColor: 'magenta', indent: 20, fontSize: '12px' } : false,
+        invalidateOnRefresh: true,
+        fastScrollEnd: true,
         onUpdate: () => {
           // Read the actual current background color from the element
           const currentColor = (gsap.getProperty(mainContent, 'backgroundColor') as string) || toColor

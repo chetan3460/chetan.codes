@@ -6,76 +6,73 @@
         <div class="content-section__head">
           <h2 class="works__title content-section__title scroll-js-title " data-splitting data-fx="typewriter-scramble">
             Areas of Mastery</h2>
-          <span class="works__decorative content-section__decorative scroll-js-title !text-[#e5ffc3]/50" data-splitting
+          <span class="works__decorative content-section__decorative scroll-js-title" data-splitting
             data-fx="scale-words">Skills</span>
+        </div>
+        <div class="about__wrapper w-full mx-auto max-w-7xl content-section__wrapper mb-10 md:mb-18 text-center">
+          <div class="about__description content-section__description scroll-js-content !text-[#fff]" data-splitting
+            data-fx="scroll-opacity">
+            <p>
+              I approach development with clarity, intention, and precision — crafting
+              systems that scale, interfaces that feel alive, and experiences that balance
+              performance with creativity. Every component, every animation, every line of
+              code is a step toward something purposeful.
+            </p>
+          </div>
         </div>
 
         <ClientOnly>
           <div class="w-full flex flex-col items-center justify-center">
             <div class="relative w-full max-w-7xl 
-                grid grid-cols-2 md:grid-cols-4 gap-5 
+                grid grid-cols-1 md:grid-cols-4 gap-5 
                 items-stretch"> <!-- ⭐ Force equal height columns -->
 
               <div v-for="(item, index) in skills" :key="index" class="relative flex flex-col h-full">
-                <!-- ⭐ Each card takes full height -->
+                <!-- Card container with hover-reveal background -->
+                <div
+                  class="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative h-[30rem]">
+                  <!-- Corner icons -->
+                  <PlusIcon class="absolute h-6 w-6 -top-3 -left-3 dark:text-[var(--col-accent)] text-black" />
+                  <PlusIcon class="absolute h-6 w-6 -bottom-3 -left-3 dark:text-[var(--col-accent)] text-black" />
+                  <PlusIcon class="absolute h-6 w-6 -top-3 -right-3 dark:text-[var(--col-accent)] text-black" />
+                  <PlusIcon class="absolute h-6 w-6 -bottom-3 -right-3 dark:text-[var(--col-accent)] text-black" />
 
-                <ElectricBorder :color="item.color" :speed="1" :chaos="0.4" :thickness="2"
-                  :style="{ borderRadius: '20px' }" class="h-full flex">
-                  <!-- ⭐ ElectricBorder also full height -->
+                  <!-- Hover reveal overlay -->
+                  <div
+                    class="absolute inset-0 opacity-0 group-hover/canvas-card:opacity-100 transition-opacity duration-200">
+                    <CanvasRevealEffect :animation-speed="3" container-class-name="bg-black" />
+                    <!-- Radial gradient for the fade -->
+                    <div
+                      class="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/80" />
+                  </div>
 
-                  <div class="flex flex-col w-full h-full p-6 gap-6 
-                      justify-between"> <!-- ⭐ Space out content vertically -->
-
+                  <!-- Card content -->
+                  <div class="relative z-10 flex flex-col w-full h-full p-6 gap-6 justify-between">
                     <!-- Top section -->
                     <div class="flex flex-col gap-6">
-
                       <!-- Icon -->
                       <component :is="iconMap[item.icon]" class="w-10 h-10 text-white opacity-90" stroke-width="1.5" />
-
                       <!-- Number + Title -->
                       <div class="flex flex-col gap-1">
-                        <span class="text-white/40 font-mono tracking-widest text-sm">
-                          [{{ item.id }}]
-                        </span>
-                        <h2 class="text-white font-semibold text-2xl md:text-3xl leading-tight">
-                          {{ item.title }}
-                        </h2>
+                        <span class="text-white font-mono tracking-widest text-sm">[{{ item.id }}]</span>
+                        <h2 class="text-white font-semibold text-2xl md:text-3xl leading-tight">{{ item.title }}</h2>
                       </div>
-
                       <!-- Description -->
-                      <p class="text-slate-300 text-base leading-relaxed">
-                        {{ item.description }}
-                      </p>
+                      <p class="text-white text-base leading-relaxed">{{ item.description }}</p>
                     </div>
-
                     <!-- Bottom section (Tags) -->
                     <div class="flex flex-wrap gap-2">
                       <span v-for="(tag, tIndex) in item.tags" :key="tIndex"
-                        class="px-3 py-1 text-xs rounded-md bg-white/5 border border-white/10 text-slate-200">
-                        {{ tag }}
-                      </span>
+                        class="px-3 py-1 text-xs rounded-md bg-white/5 border border-white/10 text-slate-200">{{ tag
+                        }}</span>
                     </div>
-
                   </div>
-                </ElectricBorder>
+                </div>
               </div>
 
             </div>
           </div>
         </ClientOnly>
-
-
-        <!-- <div class="overflow-hidden relative">
-          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 max-w-7xl mx-auto ">
-            <div v-for="(icon, index) in skillIcons" :key="index"
-              class="skill-card-wrapper flex flex-col items-center justify-center">
-              <ParticleImage :image-src="icon.src" canvas-width="150" canvas-height="150" mouse-force="50"
-                gravity="0.08" :noise="9" particle-size="2" particle-gap="1" />
-            </div>
-          </div>
-
-
-        </div> -->
       </div>
 
 
@@ -90,8 +87,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useAnimations } from "@/composables/useAnimations"
-import ParticleImage from '@/components/ParticleImage.vue'
-import ElectricBorder from '@/components/ui/ElectricBorder.vue'
+import CanvasRevealEffect from '@/components/ui/CanvasRevealEffect.vue'
+import PlusIcon from '@/components/ui/icons/PlusIcon.vue'
 import { Wrench, Layout, Bot, Rocket } from 'lucide-vue-next'
 
 const { $splitting } = useNuxtApp()

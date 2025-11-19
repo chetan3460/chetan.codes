@@ -1,71 +1,15 @@
 @import 'tailwindcss';
 @tailwind utilities;
 
-/* Custom CSS */
-@theme {
-  --font-body: 'Outfit', sans-serif;
-  --font-outfit: 'Outfit', sans-serif;
-  --font-cormorant: 'Cormorant Garamond', serif;
-  --font-OutfitPortfolio: 'OutfitPortfolio', sans-serif;
-  /* Color */
-  --preloader-bg: #fff;
-  --preloader-text: #000;
-  --preloader-accent: #1fa5fd;
-  --cursor-small: #fff;
-  --cursor-large: #1fa5fd;
-  --cursor-text: #000;
-  --canvas-bg: #080618;
-  --canvas-text: #fff;
-  --overlay-project: rgba(0, 0, 0, 0.7);
-  --overlay-about: rgba(0, 0, 0, 0.3);
-  --repeat-text-bg: #000;
-  --col-pinwheel: #fff;
-  --col-border: #1fa5fd;
-  --col-arrow: #fff;
-  --col-accent: #1fa5fd;
-  --col-text: #ecf5ff;
-  --col-text-500: hsla(0, 0%, 100%, 0.7);
-  --col-text-deco: hsla(0, 0%, 100%, 0.05);
-  --col-bg: #080618;
-  --col-bg-fake: transparent;
-
-  --ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
-}
-@layer base {
-  html {
-    @apply min-h-screen relative w-full  antialiased;
-
-    /* Non-Tailwind properties */
-    font-kerning: none;
-    text-rendering: optimizeSpeed;
-  }
-  @media (min-width: 1025px) {
-    html {
-      font-size: clamp(1px, 16px, 1000vw / var(--size));
-    }
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-/* Apply default fonts */
-@import './adaptive-logo.css';
-
-body {
-  font-family: var(--font-body);
-  color: #fff;
-}
-
-h1,
-h2,
-h3,
+/* Project CSS split for maintainability */
+@import './base.css';
+@import './components.css';
+@import './utilities.css';
 h4,
 h5,
 h6 {
   font-family: var(--font-outfit);
+  color: #34e8bb;
 }
 
 html.lenis,
@@ -89,10 +33,6 @@ html.lenis body {
   pointer-events: none;
 }
 
-.theme-light .hero-header__slogan {
-  mix-blend-mode: color-burn;
-}
-
 .not-clickable {
   pointer-events: none;
 }
@@ -106,12 +46,6 @@ html.lenis body {
 * {
   margin: 0;
 } */
-
-body {
-  line-height: 1.4;
-  -webkit-font-smoothing: antialiased;
-  color: #fff;
-}
 
 canvas,
 img,
@@ -244,12 +178,6 @@ body .site-main {
   }
 }
 
-@layer components {
-  .custom-grid {
-    @apply grid gap-[3.125rem] grid-cols-12;
-  }
-}
-
 /* About */
 body .site-main > section:not(.hero-header) {
   z-index: 3;
@@ -307,7 +235,7 @@ section {
   @apply font-normal text-lg md:text-2xl lg:text-3xl  mb-6 lg:mb-8;
 }
 
-/* Data Effect 27 Styles */
+/* Data Effect 27 Styles (removed unused .content__title--effect27) */
 .content {
   position: relative;
 }
@@ -316,45 +244,10 @@ section {
   @apply font-cormorant text-center;
 }
 
-.content__title--effect27 {
-  /* font-weight: initial;
-  font-family: var(--font-cormorant); */
-  font-size: 6vw;
-  text-transform: uppercase;
-  margin-top: 3rem;
-}
-
 .char-wrap {
   display: inline-block;
   position: relative;
   overflow: hidden;
-}
-
-@media screen and (min-width: 768px) {
-  .content__title--effect27 {
-    font-size: 4rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .content__title--effect27 {
-    font-size: 5rem;
-  }
-}
-
-/* Header Color Adaptation */
-header.header--light {
-  --col-text: #ecf5ff;
-  --col-text-500: hsla(0, 0%, 100%, 0.7);
-  --col-pinwheel: #fff;
-  --col-accent: #1fa5fd;
-}
-
-header.header--dark {
-  --col-text: #1a1a2e;
-  --col-text-500: hsla(0, 0%, 0%, 0.6);
-  --col-pinwheel: #1a1a2e;
-  --col-accent: #1a1a2e;
 }
 
 header .header__name,
@@ -382,6 +275,21 @@ header path[logo-fill] {
   }
 }
 
+@theme inline {
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
+
+  @keyframes cell-ripple {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+}
 @theme inline {
   --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
 

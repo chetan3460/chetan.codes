@@ -2,7 +2,7 @@
   <div ref="containerRef" :class="cn(
     'absolute inset-0 h-full w-full',
     '[--cell-border-color:var(--color-neutral-300)] [--cell-fill-color:var(--color-neutral-100)] [--cell-shadow-color:var(--color-neutral-500)]',
-    'dark:[--cell-border-color:var(--color-neutral-700)] dark:[--cell-fill-color:var(--color-neutral-900)] dark:[--cell-shadow-color:var(--color-neutral-800)]'
+    'dark:[--cell-border-color:var(--col-accent)] dark:[--cell-fill-color:var(--col-accent)] dark:[--cell-shadow-color:var(--col-accent)]'
   )">
     <div class="relative h-full w-full overflow-hidden">
       <div class="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />

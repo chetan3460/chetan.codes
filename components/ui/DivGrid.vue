@@ -1,7 +1,7 @@
 <template>
   <div :class="cn('relative z-[3]', className)" :style="gridStyle">
     <div v-for="(idx) in cells" :key="idx" :class="cn(
-      'cell relative border-[0.5px] opacity-40 transition-opacity duration-150 will-change-transform hover:opacity-80 ',
+      'cell relative hover:border-[0.5px] hover:border-[#34e8bb] opacity-40 transition-opacity duration-150 will-change-transform hover:opacity-80 ',
       clickedCell && 'animate-cell-ripple [animation-fill-mode:none]',
       !interactive && 'pointer-events-none'
     )" :style="{

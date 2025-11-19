@@ -5,8 +5,9 @@
             <!-- Logo -->
             <div
                 class="header__block header__block--left   flex items-start col-span-8 lg:col-span-4 col-start-1 lg:col-start-1 justify-start">
-<a href="/" class="backdrop-blur-[10px] bg-white/10 dark:bg-black/20 supports-[backdrop-filter]:bg-white/10 supports-[backdrop-filter]:dark:bg-black/20 header__logo flex items-center " data-pointer="link"
-                    data-pointer-text="Reload">
+                <a href="/"
+                    class="backdrop-blur-[10px] bg-white/10 dark:bg-black/20 supports-[backdrop-filter]:bg-white/10 supports-[backdrop-filter]:dark:bg-black/20 header__logo flex items-center "
+                    data-pointer="link" data-pointer-text="Reload">n
                     <div class="header__pinwheel relative z-[1]  overflow-hidden rounded-full">
                         <span class="header__pinwheel-svg svg-data  size-10 p-1.5 rotate-[-24deg] inline-flex">
 

@@ -195,7 +195,7 @@ onMounted(() => {
 </script>
 <style>
 .contact__title {
-color: var(--col-accent) !important;
+    color: var(--col-accent) !important;
     display: grid;
     font-size: 16vw;
     font-weight: 900;
@@ -208,7 +208,7 @@ color: var(--col-accent) !important;
 }
 
 .contact__title span {
-    background-color: #000;
+    background-color: #103228;
     color: #fff;
     grid-area: 1 / 1 / 2 / 2;
     line-height: .839;
@@ -232,7 +232,7 @@ color: var(--col-accent) !important;
 }
 
 .footer__overlay {
-background-color: var(--col-accent);
+    background-color: var(--col-accent);
 }
 
 .footer__overlay {

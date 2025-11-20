@@ -27,47 +27,46 @@
                 grid grid-cols-1 md:grid-cols-4 gap-5 
                 items-stretch"> <!-- ⭐ Force equal height columns -->
 
-              <div v-for="(item, index) in skills" :key="index" class="relative flex flex-col h-full">
-                <!-- Card container with hover-reveal background -->
+              <!-- Card container with hover-reveal background -->
+              <div v-for="(item, index) in skills" :key="index"
+                class="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative">
+                <!-- Corner icons -->
+                <PlusIcon class="absolute h-6 w-6 -top-3 -left-3 dark:text-[var(--col-accent)] text-black" />
+                <PlusIcon class="absolute h-6 w-6 -bottom-3 -left-3 dark:text-[var(--col-accent)] text-black" />
+                <PlusIcon class="absolute h-6 w-6 -top-3 -right-3 dark:text-[var(--col-accent)] text-black" />
+                <PlusIcon class="absolute h-6 w-6 -bottom-3 -right-3 dark:text-[var(--col-accent)] text-black" />
+
+                <!-- Hover reveal overlay -->
                 <div
-                  class="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative h-[30rem]">
-                  <!-- Corner icons -->
-                  <PlusIcon class="absolute h-6 w-6 -top-3 -left-3 dark:text-[var(--col-accent)] text-black" />
-                  <PlusIcon class="absolute h-6 w-6 -bottom-3 -left-3 dark:text-[var(--col-accent)] text-black" />
-                  <PlusIcon class="absolute h-6 w-6 -top-3 -right-3 dark:text-[var(--col-accent)] text-black" />
-                  <PlusIcon class="absolute h-6 w-6 -bottom-3 -right-3 dark:text-[var(--col-accent)] text-black" />
-
-                  <!-- Hover reveal overlay -->
+                  class="absolute inset-0 opacity-0 group-hover/canvas-card:opacity-100 transition-opacity duration-200">
+                  <CanvasRevealEffect :animation-speed="3" container-class-name="bg-black" />
+                  <!-- Radial gradient for the fade -->
                   <div
-                    class="absolute inset-0 opacity-0 group-hover/canvas-card:opacity-100 transition-opacity duration-200">
-                    <CanvasRevealEffect :animation-speed="3" container-class-name="bg-black" />
-                    <!-- Radial gradient for the fade -->
-                    <div
-                      class="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/80" />
-                  </div>
+                    class="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/80" />
+                </div>
 
-                  <!-- Card content -->
-                  <div class="relative z-10 flex flex-col w-full h-full p-6 gap-6 justify-between">
-                    <!-- Top section -->
-                    <div class="flex flex-col gap-6">
-                      <!-- Icon -->
-                      <component :is="iconMap[item.icon]" class="w-10 h-10 text-white opacity-90" stroke-width="1.5" />
-                      <!-- Number + Title -->
-                      <div class="flex flex-col gap-1">
-                        <span class="text-white font-mono tracking-widest text-sm">[{{ item.id }}]</span>
-                        <h2 class="text-white font-semibold text-2xl md:text-3xl leading-tight">{{ item.title }}</h2>
-                      </div>
-                      <!-- Description -->
-                      <p class="text-white text-base leading-relaxed">{{ item.description }}</p>
+                <!-- Card content -->
+                <div class="relative z-10 flex flex-col w-full h-full  gap-6 justify-between">
+                  <!-- Top section -->
+                  <div class="flex flex-col gap-6">
+                    <!-- Icon -->
+                    <component :is="iconMap[item.icon]" class="w-10 h-10 text-white opacity-90" stroke-width="1.5" />
+                    <!-- Number + Title -->
+                    <div class="flex flex-col gap-1">
+                      <span class="text-white font-mono tracking-widest text-sm">[{{ item.id }}]</span>
+                      <h2 class="text-white font-semibold text-2xl md:text-3xl leading-tight">{{ item.title }}</h2>
                     </div>
-                    <!-- Bottom section (Tags) -->
-                    <div class="flex flex-wrap gap-2">
-                      <span v-for="(tag, tIndex) in item.tags" :key="tIndex"
-                        class="px-3 py-1 text-xs rounded-md bg-white/5 border border-white/10 text-slate-200">{{ tag
-                        }}</span>
-                    </div>
+                    <!-- Description -->
+                    <p class="text-white text-base leading-relaxed">{{ item.description }}</p>
+                  </div>
+                  <!-- Bottom section (Tags) -->
+                  <div class="flex flex-wrap gap-2">
+                    <span v-for="(tag, tIndex) in item.tags" :key="tIndex"
+                      class="px-3 py-1 text-xs rounded-md bg-white/5 border border-white/10 text-slate-200">{{ tag
+                      }}</span>
                   </div>
                 </div>
+
               </div>
 
             </div>
@@ -102,17 +101,17 @@ const iconMap = {
   Rocket
 }
 
-const skillIcons = [
-  { src: '/assets/Images/skills/icons8-wordpress-150.png', name: 'WordPress' },
-  { src: '/assets/Images/skills/icons8-vue-js-150.png', name: 'Vue.js' },
-  { src: '/assets/Images/skills/icons8-nuxt-js-150.png', name: 'Nuxt.js' },
-  { src: '/assets/Images/skills/icons8-js-150.png', name: 'JavaScript' },
-  { src: '/assets/Images/skills/icons8-tailwind-css-150.png', name: 'Tailwind CSS' },
-  { src: '/assets/Images/skills/icons8-vite-150.png', name: 'Vite' },
-  { src: '/assets/Images/skills/icons8-webpack-150.png', name: 'Webpack' },
-  { src: '/assets/Images/skills/icons8-git-150.png', name: 'Git' },
-  { src: '/assets/Images/skills/icons8-npm-150.png', name: 'NPM' },
-]
+// const skillIcons = [
+//   { src: '/assets/Images/skills/icons8-wordpress-150.png', name: 'WordPress' },
+//   { src: '/assets/Images/skills/icons8-vue-js-150.png', name: 'Vue.js' },
+//   { src: '/assets/Images/skills/icons8-nuxt-js-150.png', name: 'Nuxt.js' },
+//   { src: '/assets/Images/skills/icons8-js-150.png', name: 'JavaScript' },
+//   { src: '/assets/Images/skills/icons8-tailwind-css-150.png', name: 'Tailwind CSS' },
+//   { src: '/assets/Images/skills/icons8-vite-150.png', name: 'Vite' },
+//   { src: '/assets/Images/skills/icons8-webpack-150.png', name: 'Webpack' },
+//   { src: '/assets/Images/skills/icons8-git-150.png', name: 'Git' },
+//   { src: '/assets/Images/skills/icons8-npm-150.png', name: 'NPM' },
+// ]
 
 onMounted(() => {
   $splitting()
@@ -120,18 +119,3 @@ onMounted(() => {
 
 useAnimations()
 </script>
-<style>
-.skill-card-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 150px;
-  height: 150px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.skill-card-wrapper canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-</style>

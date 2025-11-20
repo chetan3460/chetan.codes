@@ -5,8 +5,8 @@
             :enableMouseInteraction="true" /> -->
 
         <!-- Wave Animation -->
-        <WaveAnimation :amplitude="waveParams.amplitude" :speed="waveParams.speed" :lines="waveParams.lines"
-            :color="waveParams.color" :theme="waveParams.theme" :auto-play="true" />
+        <WaveAnimation ref="wave" :amplitude="waveParams.amplitude" :speed="waveParams.speed" :lines="waveParams.lines"
+            :color="waveParams.color" :theme="waveParams.theme" :auto-play="true" :lock-color="true" />
 
         <!-- Text Pressure -->
         <div
@@ -43,7 +43,7 @@ const waveParams = reactive({
     amplitude: 300,
     speed: 0.003,
     lines: 15,
-    color: { r: 10, g: 5, b: 33 },
+    color: { r: 52, g: 232, b: 187 },
     theme: 'theme-dark'
 })
 
@@ -66,8 +66,30 @@ const handleResize = () => {
 
 const scrollTriggers = []
 
+// Reference to WaveAnimation to access its manager
+const wave = ref(null)
+
+function handleWindowMouseMove(e) {
+    const mgr = wave.value?.getManager?.()
+    if (!mgr) return
+    const rect = { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }
+    const nx = (e.clientX - rect.left) / rect.width * 2 - 1
+    const ny = (e.clientY - rect.top) / rect.height * 2 - 1
+    mgr.cursor.x = Math.max(-1, Math.min(1, nx))
+    mgr.cursor.y = Math.max(-1, Math.min(1, ny))
+}
+
+function handleWindowMouseLeave() {
+    const mgr = wave.value?.getManager?.()
+    if (!mgr) return
+    mgr.cursor.x = 0
+    mgr.cursor.y = 0
+}
+
 onMounted(() => {
     window.addEventListener('resize', handleResize)
+    window.addEventListener('mousemove', handleWindowMouseMove)
+    window.addEventListener('mouseleave', handleWindowMouseLeave)
 
     // Smooth entrance animation to wave state
     gsap.to(threadParams, {
@@ -99,6 +121,8 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('resize', handleResize)
+    window.removeEventListener('mousemove', handleWindowMouseMove)
+    window.removeEventListener('mouseleave', handleWindowMouseLeave)
     // Cleanup ScrollTrigger instances
     scrollTriggers.forEach(st => st.kill())
 })

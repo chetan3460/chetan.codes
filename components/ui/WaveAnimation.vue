@@ -39,9 +39,13 @@ const props = defineProps({
   // Color control
   color: {
     type: Object,
-    // Ignored in favor of FIXED_COLOR; keep prop for API compatibility
-    // Note: defineProps default cannot reference local const in <script setup>
+    // If provided, this color will be used and theme cycling will be optional
     default: () => ({ r: 52, g: 232, b: 187 })
+  },
+  // When true, keep the color fixed and disable theme-based cycling
+  lockColor: {
+    type: Boolean,
+    default: false
   },
   theme: {
     type: String,
@@ -90,10 +94,14 @@ watch(() => props.lineStroke, (newVal) => {
   }
 })
 
-// Always sync with CSS variable when prop changes
-watch(() => props.color, () => {
+// Sync wave color with provided prop; fallback to CSS var only if prop missing
+watch(() => props.color, (newVal) => {
   if (manager && manager.parameters) {
-    Object.assign(manager.parameters.waveColor, getPrimaryRGB())
+    const next = newVal && typeof newVal.r === 'number' ? newVal : getPrimaryRGB()
+    Object.assign(manager.parameters.waveColor, next)
+    if (props.lockColor && manager.state) {
+      manager.state.lastElapsedTime = Number.MAX_SAFE_INTEGER
+    }
   }
 })
 
@@ -126,9 +134,13 @@ onMounted(() => {
       manager.context = canvas.getContext('2d')
       manager.setSizes()
       manager.setupCanvas()
-// Force wave color from CSS var
+// Initialize wave color: prefer prop.color, fallback to CSS var
       if (manager.parameters && manager.parameters.waveColor) {
-        Object.assign(manager.parameters.waveColor, getPrimaryRGB())
+        const initial = (props.color && typeof props.color.r === 'number') ? props.color : getPrimaryRGB()
+        Object.assign(manager.parameters.waveColor, initial)
+        if (props.lockColor && manager.state) {
+          manager.state.lastElapsedTime = Number.MAX_SAFE_INTEGER
+        }
       }
       manager.setupRandomness()
       manager.attachEventListeners()

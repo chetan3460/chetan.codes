@@ -7,7 +7,7 @@
                 class="header__block header__block--left   flex items-start col-span-8 lg:col-span-4 col-start-1 lg:col-start-1 justify-start">
                 <a href="/"
                     class="backdrop-blur-[10px] bg-white/10 dark:bg-black/20 supports-[backdrop-filter]:bg-white/10 supports-[backdrop-filter]:dark:bg-black/20 header__logo flex items-center "
-                    data-pointer="link" data-pointer-text="Reload">n
+                    data-pointer="link" data-pointer-text="Reload">
                     <div class="header__pinwheel relative z-[1]  overflow-hidden rounded-full">
                         <span class="header__pinwheel-svg svg-data  size-10 p-1.5 rotate-[-24deg] inline-flex">
 
@@ -45,59 +45,16 @@
 
                     </div>
                     <div class="header__author relative z-[2] px-[0.3125rem] text-xs ">
-                        <span class="header__name text-[var(--col-text)] font-semibold uppercase block">Chetan
+                        <span class="header__name text-[var(--col-accent)] font-semibold uppercase block">Chetan
                             Dhargalkar</span>
-                        <span class="header__role text-[var(--col-text-500)] font-medium uppercase block">Creative
+                        <span class="header__role text-white font-medium uppercase block">Creative
                             Developer</span>
                     </div>
                 </a>
             </div>
 
-            <!--Name  -->
-            <!-- <div
-                class="header__block header__block--center hidden lg:block col-span-8 lg:col-span-4 col-start-5 flex justify-center items-center">
-                <div class="header__version">
-                    <span class="">
-                        Portfolio <b class="text-[var(--col-accent)]">'25</b>
-                    </span>
-                </div>
-            </div> -->
-            <!-- Icon -->
-            <div
-                class="hidden header__block header__block--right items-center  col-span-4 col-start-9 flex justify-end ">
-                <button class="header__colors  h-[2.75rem] left-[.5rem] relative w-[2.75rem]" data-pointer="simple"
-                    title="Theme Switcher" aria-label="Theme Dark">
-                    <span
-                        class="header__colors-picker h-[1.5rem] w-[1.8125rem] absolute text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] svg-data">
 
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 78">
-                            <g fill="#FFFFFF" fill-rule="nonzero">
-                                <path class="fill-[var(--col-pinwheel)]"
-                                    d="M2.5 26.9h18.1c.9 0 1.7-.7 1.9-1.6.7-3.4 2-6.5 3.9-9.3.5-.8.5-1.8-.2-2.5L13.3.7c-.8-.8-2.2-.8-2.9.1C5.1 7.5 1.6 15.7.5 24.7c-.1 1.2.8 2.2 2 2.2Z">
-                                </path>
-                                <path class="fill-[var(--col-pinwheel)]"
-                                    d="M26.3 44.8c-1.9-2.8-3.2-5.9-3.9-9.3-.2-.9-.9-1.6-1.9-1.6h-18c-1.2 0-2.1 1-1.9 2.1 1.1 9 4.6 17.2 9.9 23.9.7.9 2.1 1 2.9.1l12.8-12.8c.6-.6.6-1.6.1-2.4Z">
-                                </path>
-                                <path class="fill-[var(--col-pinwheel)]"
-                                    d="M42.9 55.9c-3.4-.7-6.5-2-9.3-3.9-.8-.5-1.8-.5-2.5.2L18.3 65.1c-.8.8-.8 2.2.1 2.9 6.7 5.3 14.9 8.8 23.9 9.9 1.1.1 2.1-.8 2.1-1.9V57.8c.1-.9-.6-1.7-1.5-1.9Z">
-                                </path>
-                                <path class="fill-[var(--col-pinwheel)]"
-                                    d="M64.9 52.3c-.7-.7-1.7-.7-2.5-.2-2.8 1.9-5.9 3.2-9.3 3.9-.9.2-1.6.9-1.6 1.9V76c0 1.2 1 2.1 2.1 1.9 9-1.1 17.2-4.6 23.9-9.9.9-.7 1-2.1.1-2.9L64.9 52.3Z">
-                                </path>
-                                <path class="fill-[var(--col-pinwheel)]"
-                                    d="M93.5 33.9H75.4c-.9 0-1.7.7-1.9 1.6-.7 3.4-2 6.5-3.9 9.3-.5.8-.5 1.8.2 2.5l12.8 12.8c.8.8 2.2.8 2.9-.1 5.3-6.7 8.8-14.9 9.9-23.9.2-1.2-.7-2.2-1.9-2.2Z">
-                                </path>
-                                <path class="fill-[var(--col-pinwheel)]"
-                                    d="M73.5 25.3c.2.9.9 1.6 1.9 1.6h18.1c1.2 0 2.1-1 1.9-2.1-1.1-9-4.6-17.2-9.9-23.9-.7-.9-2.1-1-2.9-.1L69.9 13.5c-.7.7-.7 1.7-.2 2.5 1.8 2.7 3.2 5.9 3.8 9.3Z">
-                                </path>
-                                <path class="fill-[var(--col-pinwheel)]" class="drop"
-                                    d="M60.9 30.5c0-5.7-7.6-18.7-9.9-22.6-.6-1.1-1.8-1.7-3-1.7s-2.4.6-3 1.7c-2.3 3.9-9.9 16.9-9.9 22.6 0 7.1 5.8 12.9 12.9 12.9 7.1 0 12.9-5.7 12.9-12.9ZM46.4 25c-.1.2-3.2 5.3-.9 8.7.3.5.4 1 .3 1.5-.1.5-.4 1-.9 1.3-.3.2-.7.4-1.1.4-.7 0-1.3-.3-1.7-.9-3.8-5.7.7-12.9.9-13.2.3-.5.8-.8 1.3-.9.5-.1 1.1 0 1.6.3.8.5 1.1 1.8.5 2.8Z">
-                                </path>
-                            </g>
-                        </svg> -->
-                    </span>
-                </button>
-            </div>
+
         </div>
     </header>
 </template>
@@ -115,3 +72,21 @@ onMounted(() => {
 //     console.log("🛑 Header Component Unmounted");
 // });
 </script>
+<style>
+.header__pinwheel {
+    height: 2.5rem;
+    overflow: hidden;
+    position: relative;
+    width: 1.25rem;
+    z-index: 1;
+}
+
+.header__pinwheel-svg {
+    height: 2.5rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: rotate(-24deg);
+    width: 2.5rem;
+}
+</style>

@@ -1,17 +1,17 @@
 <template>
     <footer class="footer">
-        <div class="footer__wrapper  grid custom-container grid-cols-12 gap-4">
+        <div class="container-fluid footer__wrapper  grid custom-container grid-cols-12 gap-4">
             <div class="footer__block footer__block--left">
                 <ul class="footer__socials">
                     <li class="social__item">
-                        <a href="https://www.linkedin.com/in/alessioatzeni/" title="Follow Me on LinkedIn"
-                            target="_blank" rel="noopener noreferrer nofollow" data-pointer="simple">
+                        <a href="https://www.linkedin.com/in/chetan-dhargalkar-882411bb/" target="_blank"
+                            rel="noopener noreferrer nofollow" data-pointer="simple">
                             <span>LinkedIn</span>
                         </a>
                     </li>
                     <li class="social__item">
-                        <a href="https://github.com/Bluxart" title="Follow Me on GitHub" target="_blank"
-                            rel="noopener noreferrer nofollow" data-pointer="simple">
+                        <a href="https://github.com/chetan3460" target="_blank" rel="noopener noreferrer nofollow"
+                            data-pointer="simple">
                             <span>GitHub</span>
                         </a>
                     </li>
@@ -37,15 +37,14 @@
 /* Footer */
 
 .footer {
-    border-top: 1px solid var(--col-border);
-    margin-top: 12vh;
+    border-top: 1px solid var(--col-accent);
     position: relative;
     width: 100%;
     z-index: 3;
 }
 
 .footer__wrapper {
-    height: 6.25rem;
+    padding: 20px 10px;
     width: 100%;
 }
 

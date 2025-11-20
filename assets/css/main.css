@@ -197,7 +197,7 @@ section {
 
 /* Section Spacing */
 .content-section {
-  @apply mt-[20vh] lg:mt-[40vh];
+  @apply mt-[10vh] lg:mt-[40vh];
 }
 
 /* Section Title */
@@ -241,7 +241,7 @@ section {
 }
 
 .content__title {
-  @apply font-cormorant text-center;
+  @apply text-center;
 }
 
 .char-wrap {

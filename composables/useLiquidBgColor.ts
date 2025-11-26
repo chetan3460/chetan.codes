@@ -12,18 +12,19 @@ export const useLiquidBgColor = () => {
   let scrollTriggers: any[] = []
 
   const init = async () => {
-    // Wait for DOM to be ready
-    await new Promise(r => setTimeout(r, 100))
+    try {
+      // Wait for DOM to be ready
+      await new Promise(r => setTimeout(r, 100))
 
-    const mainContent = document.querySelector('main') as HTMLElement
-    if (!mainContent) {
-      return
-    }
+      const mainContent = document.querySelector('main') as HTMLElement
+      if (!mainContent) {
+        return
+      }
 
-    const sections = Array.from(document.querySelectorAll('[data-liquid-bg-section]')) as HTMLElement[]
-    if (sections.length === 0) {
-      return
-    }
+      const sections = Array.from(document.querySelectorAll('[data-liquid-bg-section]')) as HTMLElement[]
+      if (sections.length === 0) {
+        return
+      }
 
     // Get colors from each section (from data-bg-color attribute)
     const colors: any[] = []
@@ -78,10 +79,14 @@ export const useLiquidBgColor = () => {
       scrollTriggers.push(trigger)
     }
 
-    // Delay refresh to ensure initial color stays set
-    setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 200)
+      // Delay refresh to ensure initial color stays set
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 200)
+    } catch (error) {
+      // Silently handle initialization errors
+      console.error('Error initializing liquid background:', error)
+    }
   }
 
   
@@ -105,10 +110,14 @@ export const useLiquidBgColor = () => {
         // Apply color manipulations
         if (config.manipulateColor && Array.isArray(config.manipulateColor)) {
           config.manipulateColor.forEach((operation: any) => {
-            const key = Object.keys(operation)[0]
-            const value = Object.values(operation)[0]
-            if ((color as any)[key]) {
-              color = (color as any)[key](value)
+            const keys = Object.keys(operation)
+            const values = Object.values(operation)
+            if (keys.length > 0 && values.length > 0) {
+              const key = keys[0]
+              const value = values[0]
+              if ((color as any)[key]) {
+                color = (color as any)[key](value)
+              }
             }
           })
         }
